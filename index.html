@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Genggam — Catat Keuangan Tanpa Ribet</title>
+<meta name="description" content="Aplikasi pencatat keuangan pintar. Ketik 'makan 20rb', langsung kecatat. Scan struk, tanya AI, pantau pengeluaran — semua dalam genggaman." />
+
+<!-- Open Graph (buat preview pas di-share / Meta Ads) -->
+<meta property="og:title" content="Genggam — Catat Keuangan Tanpa Ribet" />
+<meta property="og:description" content="Ketik 'makan 20rb' langsung kecatat. Scan struk + asisten AI keuangan. Data 100% privat di HP-mu." />
+<meta property="og:type" content="website" />
+
+<link rel="icon" href="assets/icon.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --bg: #0d0d14;
+    --bg-card: #16161f;
+    --bg-card-alt: #1e1e2c;
+    --accent: #3b82f6;
+    --accent-dark: #1d4ed8;
+    --text: #f1f5f9;
+    --text-sec: #94a3b8;
+    --text-muted: #64748b;
+    --border: rgba(255,255,255,0.08);
+    --green: #22c55e;
+    --radius: 20px;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+    background: var(--bg); color: var(--text);
+    line-height: 1.6; overflow-x: hidden;
+  }
+  .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+  a { color: inherit; text-decoration: none; }
+
+  /* Buttons */
+  .btn {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: var(--accent); color: #fff; font-weight: 700; font-size: 16px;
+    padding: 16px 32px; border-radius: 14px; border: none; cursor: pointer;
+    transition: transform .15s ease, box-shadow .15s ease;
+    box-shadow: 0 8px 24px rgba(59,130,246,0.35);
+  }
+  .btn:hover { transform: translateY(-2px); box-shadow: 0 12px 32px rgba(59,130,246,0.5); }
+  .btn-ghost {
+    background: transparent; border: 1px solid var(--border); color: var(--text);
+    box-shadow: none; font-weight: 600;
+  }
+  .btn-ghost:hover { background: var(--bg-card); transform: none; box-shadow: none; }
+
+  /* Nav */
+  nav {
+    position: sticky; top: 0; z-index: 100;
+    background: rgba(13,13,20,0.8); backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-inner { display: flex; align-items: center; justify-content: space-between; padding: 16px 24px; max-width: 1100px; margin: 0 auto; }
+  .brand { display: flex; align-items: center; gap: 10px; font-weight: 800; font-size: 20px; }
+  .brand img { width: 32px; height: 32px; border-radius: 8px; }
+  .brand .bolt { color: var(--accent); }
+
+  /* Hero */
+  .hero {
+    text-align: center; padding: 80px 0 60px;
+    background: radial-gradient(ellipse at top, rgba(59,130,246,0.12), transparent 60%);
+  }
+  .hero .badge {
+    display: inline-block; font-size: 13px; font-weight: 600; color: var(--accent);
+    background: rgba(59,130,246,0.12); border: 1px solid rgba(59,130,246,0.3);
+    padding: 6px 16px; border-radius: 20px; margin-bottom: 24px;
+  }
+  .hero h1 { font-size: clamp(32px, 6vw, 56px); font-weight: 800; line-height: 1.1; letter-spacing: -1px; margin-bottom: 20px; }
+  .hero h1 .grad { background: linear-gradient(120deg, #3b82f6, #60a5fa); -webkit-background-clip: text; background-clip: text; color: transparent; }
+  .hero p { font-size: clamp(16px, 2.5vw, 20px); color: var(--text-sec); max-width: 620px; margin: 0 auto 36px; }
+  .hero-cta { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+  .hero-note { margin-top: 18px; font-size: 13px; color: var(--text-muted); }
+
+  /* Phone mockup placeholder */
+  .mockup-row { display: flex; justify-content: center; gap: 20px; margin-top: 56px; flex-wrap: wrap; }
+  .mockup {
+    width: 240px; aspect-ratio: 9/19; border-radius: 32px;
+    background: var(--bg-card); border: 1px solid var(--border);
+    display: flex; align-items: center; justify-content: center;
+    color: var(--text-muted); font-size: 13px; text-align: center; padding: 20px;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+  }
+  .mockup img { width: 100%; border-radius: 24px; display: block; }
+
+  /* Sections */
+  section { padding: 72px 0; }
+  .section-title { text-align: center; font-size: clamp(26px, 4vw, 38px); font-weight: 800; margin-bottom: 14px; letter-spacing: -0.5px; }
+  .section-sub { text-align: center; color: var(--text-sec); max-width: 560px; margin: 0 auto 48px; font-size: 16px; }
+
+  /* Problem */
+  .problem { background: var(--bg-card); }
+  .problem-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px; }
+  .problem-card { padding: 24px; }
+  .problem-card .x { color: #ef4444; font-size: 22px; margin-bottom: 8px; }
+  .problem-card h3 { font-size: 17px; margin-bottom: 6px; }
+  .problem-card p { color: var(--text-sec); font-size: 14px; }
+
+  /* Features */
+  .feat-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
+  .feat-card {
+    background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius);
+    padding: 28px; transition: border-color .2s ease, transform .2s ease;
+  }
+  .feat-card:hover { border-color: rgba(59,130,246,0.4); transform: translateY(-4px); }
+  .feat-icon { font-size: 32px; margin-bottom: 14px; display: block; }
+  .feat-card h3 { font-size: 19px; margin-bottom: 8px; }
+  .feat-card p { color: var(--text-sec); font-size: 15px; }
+
+  /* Privacy strip */
+  .privacy { background: linear-gradient(135deg, rgba(59,130,246,0.1), rgba(34,197,94,0.06)); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+  .privacy-inner { display: flex; align-items: center; gap: 20px; justify-content: center; flex-wrap: wrap; text-align: center; }
+  .privacy .lock { font-size: 40px; }
+  .privacy h3 { font-size: 22px; margin-bottom: 4px; }
+  .privacy p { color: var(--text-sec); max-width: 480px; }
+
+  /* Pricing */
+  .price-wrap { display: flex; justify-content: center; gap: 24px; flex-wrap: wrap; }
+  .price-card {
+    background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius);
+    padding: 36px 32px; width: 340px; position: relative;
+  }
+  .price-card.featured { border-color: var(--accent); box-shadow: 0 0 0 1px var(--accent), 0 20px 60px rgba(59,130,246,0.2); }
+  .price-card .pill { position: absolute; top: -13px; left: 50%; transform: translateX(-50%); background: var(--accent); color: #fff; font-size: 12px; font-weight: 700; padding: 5px 16px; border-radius: 20px; }
+  .price-card h3 { font-size: 20px; margin-bottom: 6px; }
+  .price-card .price { font-size: 40px; font-weight: 800; margin: 10px 0; }
+  .price-card .price small { font-size: 15px; color: var(--text-muted); font-weight: 500; }
+  .price-card ul { list-style: none; margin: 20px 0 28px; }
+  .price-card li { padding: 8px 0; color: var(--text-sec); font-size: 15px; display: flex; gap: 10px; align-items: flex-start; }
+  .price-card li::before { content: "✓"; color: var(--green); font-weight: 800; }
+  .price-card .btn { width: 100%; justify-content: center; }
+
+  /* FAQ */
+  /* Comparison */
+  .compare { background: var(--bg-card); }
+  .compare-table { max-width: 720px; margin: 0 auto; border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; }
+  .compare-row { display: grid; grid-template-columns: 1.6fr 1fr 1fr; border-bottom: 1px solid var(--border); }
+  .compare-row:last-child { border-bottom: none; }
+  .compare-cell { padding: 14px 12px; text-align: center; font-size: 14px; color: var(--text-sec); display: flex; align-items: center; justify-content: center; }
+  .compare-cell.feat-col { justify-content: flex-start; text-align: left; color: var(--text); font-weight: 500; }
+  .compare-cell.genggam-col { color: var(--green); font-weight: 700; background: rgba(59,130,246,0.06); }
+  .compare-head .compare-cell { font-weight: 700; color: var(--text); font-size: 13px; text-transform: uppercase; letter-spacing: 0.5px; background: var(--bg-card-alt); }
+  .compare-head .compare-cell.genggam-col { color: var(--accent); }
+
+  .faq { background: var(--bg-card); }
+  .faq-item { border-bottom: 1px solid var(--border); padding: 20px 0; max-width: 720px; margin: 0 auto; }
+  .faq-item h3 { font-size: 17px; margin-bottom: 6px; }
+  .faq-item p { color: var(--text-sec); font-size: 15px; }
+
+  /* Final CTA */
+  .final { text-align: center; }
+  .final h2 { font-size: clamp(28px, 5vw, 44px); font-weight: 800; margin-bottom: 16px; letter-spacing: -0.5px; }
+  .final p { color: var(--text-sec); font-size: 18px; margin-bottom: 32px; }
+
+  footer { border-top: 1px solid var(--border); padding: 32px 0; text-align: center; color: var(--text-muted); font-size: 14px; }
+  footer .brand { justify-content: center; margin-bottom: 12px; }
+</style>
+<!-- Meta Pixel (akun ads sama dgn Adverthinking — data numpuk di 1 pixel) -->
+<script>
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+document,'script','https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '998779425387691');
+fbq('track', 'PageView');
+fbq('track', 'ViewContent', {content_name: 'Genggam App', content_category: 'app', value: 99000, currency: 'IDR'});
+</script>
+<noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=998779425387691&ev=PageView&noscript=1"/></noscript>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <div class="brand"><img src="assets/icon.png" alt="Genggam" />Genggam<span class="bolt">⚡</span></div>
+    <a href="#harga" class="btn btn-ghost" style="padding:10px 20px; font-size:14px;">Lihat Harga</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="container">
+    <span class="badge">💙 Pencatat Keuangan Pintar</span>
+    <h1>Catat keuangan<br /><span class="grad">tanpa ribet.</span></h1>
+    <p>Cukup ketik <strong>"makan 20rb"</strong> — langsung kecatat dengan kategori otomatis. Scan struk, tanya asisten AI, pantau pengeluaran. Secepat ngetik chat.</p>
+    <div class="hero-cta">
+      <a href="#harga" class="btn">Mulai Sekarang →</a>
+      <a href="#fitur" class="btn btn-ghost">Lihat Fitur</a>
+    </div>
+    <div class="hero-note">📱 Untuk Android · Data 100% privat di HP-mu · Tanpa login ribet</div>
+
+    <div class="mockup-row">
+      <div class="mockup"><img src="assets/screenshot-home.png" alt="Tampilan Genggam" onerror="this.parentNode.innerHTML='📱 Screenshot Home<br/><small>(ganti assets/screenshot-home.png)</small>'" /></div>
+      <div class="mockup"><img src="assets/screenshot-stats.png" alt="Statistik Genggam" onerror="this.parentNode.innerHTML='📊 Screenshot Statistik<br/><small>(ganti assets/screenshot-stats.png)</small>'" /></div>
+    </div>
+  </div>
+</header>
+
+<!-- PROBLEM -->
+<section class="problem">
+  <div class="container">
+    <h2 class="section-title">Capek catat keuangan manual?</h2>
+    <p class="section-sub">Kebanyakan orang nyerah nyatet pengeluaran karena ribet. Genggam bikin sebaliknya.</p>
+    <div class="problem-grid">
+      <div class="problem-card"><div class="x">✕</div><h3>Lupa nyatet</h3><p>Niat awal bulan rajin, minggu kedua udah males. Akhirnya nggak tau uang ke mana.</p></div>
+      <div class="problem-card"><div class="x">✕</div><h3>Excel ribet</h3><p>Buka spreadsheet, ketik tanggal, kategori, nominal... cape duluan sebelum mulai.</p></div>
+      <div class="problem-card"><div class="x">✕</div><h3>Struk numpuk</h3><p>Nota belanja kekumpul di dompet, niat dicatat nanti — tapi "nanti" nggak pernah datang.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section id="fitur">
+  <div class="container">
+    <h2 class="section-title">Semua yang kamu butuh, dalam genggaman</h2>
+    <p class="section-sub">Dirancang biar nyatet keuangan jadi kebiasaan, bukan beban.</p>
+    <div class="feat-grid">
+      <div class="feat-card"><span class="feat-icon">⚡</span><h3>Catat Secepat Chat</h3><p>Ketik "bensin 50rb" atau "gaji masuk 5jt" — AI otomatis paham kategori, tanggal, & nominal.</p></div>
+      <div class="feat-card"><span class="feat-icon">🤖</span><h3>Asisten Keuangan AI</h3><p>Tanya "gimana cara hemat bulan ini?" ke Fin. Konsultasi keuangan kapan aja, langsung di app.</p></div>
+      <div class="feat-card"><span class="feat-icon">📸</span><h3>Scan Struk Otomatis</h3><p>Jepret nota belanja — nominal, tanggal, kategori ke-detect sendiri. Nggak perlu ketik.</p></div>
+      <div class="feat-card"><span class="feat-icon">📊</span><h3>Grafik & Analitik</h3><p>Lihat ke mana uangmu pergi: donut chart, tren bulanan, pola pengeluaran harian.</p></div>
+      <div class="feat-card"><span class="feat-icon">🎯</span><h3>Budget & Goal Tabungan</h3><p>Set limit per kategori & target nabung. Genggam ingetin kalau mulai boros.</p></div>
+      <div class="feat-card"><span class="feat-icon">💯</span><h3>Skor Kesehatan Keuangan</h3><p>Tahu kondisi finansialmu dalam satu angka, plus tips konkret buat memperbaiki.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- PRIVACY -->
+<section class="privacy">
+  <div class="container privacy-inner">
+    <div class="lock">🔒</div>
+    <div>
+      <h3>Datamu 100% milikmu</h3>
+      <p>Semua catatan tersimpan di HP-mu sendiri — bukan di server kami. Privat, aman, dan tetap jalan walau offline.</p>
+    </div>
+  </div>
+</section>
+
+<!-- COMPARISON -->
+<section class="compare">
+  <div class="container">
+    <h2 class="section-title">Genggam vs cara lama</h2>
+    <p class="section-sub">Kenapa nggak cukup pakai Excel atau catatan biasa.</p>
+    <div class="compare-table">
+      <div class="compare-row compare-head">
+        <div class="compare-cell feat-col">Fitur</div>
+        <div class="compare-cell">Catatan / Excel</div>
+        <div class="compare-cell genggam-col">Genggam ⚡</div>
+      </div>
+      <div class="compare-row"><div class="compare-cell feat-col">Catat secepat ngetik chat</div><div class="compare-cell">✕</div><div class="compare-cell genggam-col">✓</div></div>
+      <div class="compare-row"><div class="compare-cell feat-col">Kategori otomatis (AI)</div><div class="compare-cell">✕</div><div class="compare-cell genggam-col">✓</div></div>
+      <div class="compare-row"><div class="compare-cell feat-col">Scan struk → otomatis</div><div class="compare-cell">✕</div><div class="compare-cell genggam-col">✓</div></div>
+      <div class="compare-row"><div class="compare-cell feat-col">Asisten keuangan AI</div><div class="compare-cell">✕</div><div class="compare-cell genggam-col">✓</div></div>
+      <div class="compare-row"><div class="compare-cell feat-col">Grafik & analitik otomatis</div><div class="compare-cell">Manual</div><div class="compare-cell genggam-col">✓</div></div>
+      <div class="compare-row"><div class="compare-cell feat-col">Budget & goal tabungan</div><div class="compare-cell">Manual</div><div class="compare-cell genggam-col">✓</div></div>
+      <div class="compare-row"><div class="compare-cell feat-col">Skor kesehatan keuangan</div><div class="compare-cell">✕</div><div class="compare-cell genggam-col">✓</div></div>
+      <div class="compare-row"><div class="compare-cell feat-col">Selalu di genggaman (HP)</div><div class="compare-cell">Repot</div><div class="compare-cell genggam-col">✓</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section id="harga">
+  <div class="container">
+    <h2 class="section-title">Harga sederhana, tanpa jebakan</h2>
+    <p class="section-sub">Sekali bayar, pakai selamanya. Tanpa langganan bulanan.</p>
+    <div class="price-wrap">
+      <div class="price-card featured">
+        <span class="pill">HARGA PERKENALAN</span>
+        <h3>Genggam Lifetime</h3>
+        <div class="price"><span style="text-decoration:line-through; color:var(--text-muted); font-size:22px; font-weight:600;">Rp199.000</span> &nbsp;Rp99.000 <small>/ sekali bayar</small></div>
+        <p style="color:var(--green); font-size:13px; font-weight:600; margin:-4px 0 4px;">Hemat 50% — harga early adopter</p>
+        <ul>
+          <li>Semua fitur AI (catat cepat, scan struk, chat Fin)</li>
+          <li>Budget, goal tabungan, analitik lengkap</li>
+          <li>Catat banyak transaksi sekaligus (bulk)</li>
+          <li>Data privat di HP, offline-first</li>
+          <li>Update gratis selamanya</li>
+          <li>Tanpa biaya bulanan, tanpa iklan</li>
+        </ul>
+        <a href="GANTI_CHECKOUT_LINK" class="btn" id="cta-beli" onclick="fbq('track','InitiateCheckout',{content_name:'Genggam App',value:99000,currency:'IDR'})">Beli Sekarang</a>
+        <p style="text-align:center; color:var(--text-muted); font-size:12px; margin-top:12px;">🔒 Garansi 7 hari — nggak cocok, uang kembali</p>
+      </div>
+    </div>
+    <p style="text-align:center; color:var(--text-muted); font-size:13px; margin-top:24px;">
+      *Fitur AI butuh API key Gemini gratis dari Google (panduan ada di app). Selebihnya jalan tanpa internet.
+    </p>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq">
+  <div class="container">
+    <h2 class="section-title">Pertanyaan Umum</h2>
+    <div style="margin-top:40px;">
+      <div class="faq-item"><h3>Datanya disimpan di mana?</h3><p>Di HP kamu sendiri (penyimpanan lokal). Genggam nggak nyimpen data keuanganmu di server mana pun — jadi privat dan tetap bisa dibuka offline.</p></div>
+      <div class="faq-item"><h3>Apakah perlu langganan?</h3><p>Nggak. Sekali bayar Rp99.000, kamu pakai selamanya termasuk update. Nggak ada tagihan bulanan.</p></div>
+      <div class="faq-item"><h3>Fitur AI-nya bayar lagi?</h3><p>Nggak. Fitur AI pakai API key Gemini gratis dari Google — tinggal ikutin panduan singkat di dalam app (3 langkah, gratis).</p></div>
+      <div class="faq-item"><h3>Kalau nggak cocok gimana?</h3><p>Ada garansi 7 hari. Kalau Genggam nggak sesuai harapan, hubungi kami dalam 7 hari setelah beli — uang kembali, tanpa ribet.</p></div>
+      <div class="faq-item"><h3>Bisa dipakai di iPhone?</h3><p>Saat ini Genggam tersedia untuk Android. Versi iOS sedang dipertimbangkan.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="final">
+  <div class="container">
+    <h2>Mulai atur keuanganmu hari ini</h2>
+    <p>Gabung dengan mereka yang akhirnya tahu ke mana uangnya pergi.</p>
+    <a href="#harga" class="btn">Dapatkan Genggam →</a>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="brand"><img src="assets/icon.png" alt="Genggam" />Genggam<span class="bolt">⚡</span></div>
+    <p>Dibuat dengan ❤️ oleh Geri Bintang · © 2026 Genggam</p>
+  </div>
+</footer>
+
+</body>
+</html>
