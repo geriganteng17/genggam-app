@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Genggam — Catat Keuangan Tanpa Ribet</title>
+<title>[PREVIEW] Genggam — Catat Keuangan Tanpa Ribet</title>
 <meta name="description" content="Aplikasi pencatat keuangan pintar. Ketik 'makan 20rb', langsung kecatat. Scan struk, tanya AI, pantau pengeluaran — semua dalam genggaman." />
 
 <!-- Open Graph (buat preview pas di-share / Meta Ads) -->
@@ -54,6 +54,9 @@
   }
   .btn-ghost:hover { background: var(--bg-card); transform: none; box-shadow: none; }
 
+  .price-card .old { text-decoration: line-through; color: var(--text-muted); font-size: 20px; font-weight: 600; }
+  .price-card .tier-note { color: var(--text-sec); font-size: 13.5px; margin-top: -4px; }
+  .price-card { min-width: 260px; flex: 1; max-width: 340px; }
   /* Nav */
   nav {
     position: sticky; top: 0; z-index: 100;
@@ -176,6 +179,7 @@ fbq('track', 'PageView');
 fbq('track', 'ViewContent', {content_name: 'Genggam App', content_category: 'app', value: 99000, currency: 'IDR'});
 </script>
 <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=998779425387691&ev=PageView&noscript=1"/></noscript>
+<meta name="robots" content="noindex">
 </head>
 <body>
 
@@ -271,27 +275,55 @@ fbq('track', 'ViewContent', {content_name: 'Genggam App', content_category: 'app
 <!-- PRICING -->
 <section id="harga">
   <div class="container">
-    <h2 class="section-title">Harga sederhana, tanpa jebakan</h2>
-    <p class="section-sub">Sekali bayar, pakai selamanya. Tanpa langganan bulanan.</p>
+    <h2 class="section-title">Pilih paketmu — sekali bayar, selamanya</h2>
+    <p class="section-sub">Tanpa langganan, tanpa iklan. Semua paket dapet update gratis selamanya.</p>
     <div class="price-wrap">
-      <div class="price-card featured">
-        <span class="pill">HARGA PERKENALAN</span>
-        <h3>Genggam Lifetime</h3>
-        <div class="price"><span style="text-decoration:line-through; color:var(--text-muted); font-size:22px; font-weight:600;">Rp199.000</span> &nbsp;Rp99.000 <small>/ sekali bayar</small></div>
-        <p style="color:var(--green); font-size:13px; font-weight:600; margin:-4px 0 4px;">Hemat 50% — harga early adopter</p>
+
+      <div class="price-card">
+        <h3>Hemat</h3>
+        <div class="price"><span class="old">Rp149.000</span> &nbsp;Rp75.000 <small>/ sekali bayar</small></div>
+        <p class="tier-note">Buat kamu yang cukup di HP Android.</p>
         <ul>
-          <li>Semua fitur AI (catat cepat, scan struk, chat Fin)</li>
+          <li>Aplikasi Android (APK)</li>
+          <li>Catat cepat: ketik "makan 20rb", beres</li>
           <li>Budget, goal tabungan, analitik lengkap</li>
-          <li>Catat banyak transaksi sekaligus (bulk)</li>
+          <li>Fitur AI: scan struk + chat Fin*</li>
           <li>Data privat di HP, offline-first</li>
-          <li>Update gratis selamanya</li>
-          <li>Tanpa biaya bulanan, tanpa iklan</li>
         </ul>
-        <a href="https://adverthinking.myscalev.com/genggam" class="btn" id="cta-beli" onclick="fbq('track','InitiateCheckout',{content_name:'Genggam App',value:99000,currency:'IDR'})">Beli Sekarang</a>
-        <p style="text-align:center; color:var(--text-muted); font-size:12px; margin-top:12px;">🔒 Garansi 7 hari — nggak cocok, uang kembali</p>
+        <a href="https://adverthinking.myscalev.com/genggam" class="btn btn-ghost" onclick="fbq('track','InitiateCheckout',{content_name:'Genggam Hemat',value:75000,currency:'IDR'})">Ambil Paket Hemat</a>
       </div>
+
+      <div class="price-card featured">
+        <span class="pill">PALING LARIS</span>
+        <h3>Lengkap</h3>
+        <div class="price"><span class="old">Rp199.000</span> &nbsp;Rp100.000 <small>/ sekali bayar</small></div>
+        <p class="tier-note">Semua perangkat: HP Android, iPhone, laptop.</p>
+        <ul>
+          <li>Semua yang ada di paket Hemat</li>
+          <li><b>+ Web App</b> — buka dari browser mana aja</li>
+          <li><b>+ Bisa dipasang di iPhone & laptop</b> (tanpa APK)</li>
+          <li>+ Kode akses pribadi, aktif selamanya</li>
+          <li>+ Satu pembelian, semua perangkatmu</li>
+        </ul>
+        <a href="https://adverthinking.myscalev.com/genggam" class="btn" id="cta-beli" onclick="fbq('track','InitiateCheckout',{content_name:'Genggam Lengkap',value:100000,currency:'IDR'})">Beli Paket Lengkap</a>
+      </div>
+
+      <div class="price-card">
+        <h3>Premium</h3>
+        <div class="price"><span class="old">Rp399.000</span> &nbsp;Rp199.000 <small>/ sekali bayar</small></div>
+        <p class="tier-note">Paket lengkap + amunisi atur uang.</p>
+        <ul>
+          <li>Semua yang ada di paket Lengkap</li>
+          <li><b>+ E-book "30 Hari Pegang Kendali Gajimu"</b></li>
+          <li><b>+ Template Budgeting Sheet</b> siap pakai</li>
+          <li>+ Prioritas support via WhatsApp</li>
+        </ul>
+        <a href="https://adverthinking.myscalev.com/genggam" class="btn btn-ghost" onclick="fbq('track','InitiateCheckout',{content_name:'Genggam Premium',value:199000,currency:'IDR'})">Ambil Premium</a>
+      </div>
+
     </div>
-    <p style="text-align:center; color:var(--text-muted); font-size:13px; margin-top:24px;">
+    <p style="text-align:center; color:var(--text-muted); font-size:13px; margin-top:22px;">
+      🔒 Garansi 7 hari semua paket — nggak cocok, uang kembali.<br />
       *Fitur AI butuh API key Gemini gratis dari Google (panduan ada di app). Selebihnya jalan tanpa internet.
     </p>
   </div>
@@ -327,5 +359,5 @@ fbq('track', 'ViewContent', {content_name: 'Genggam App', content_category: 'app
   </div>
 </footer>
 
-</body>
+<div style="position:fixed;bottom:0;left:0;right:0;z-index:9999;background:#EF9F27;color:#111;font-weight:700;font-size:13px;text-align:center;padding:8px;">PREVIEW HARGA — belum tayang. Approve dulu, baru di-apply ke LP live.</div></body>
 </html>
