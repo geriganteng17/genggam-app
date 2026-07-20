@@ -1070,8 +1070,8 @@ const CATS=[
   {n:'sedekah',e:'🤲',t:'out'},{n:'Sedekah Jumat',e:'🕌',t:'out'},{n:'sedekah ortu',e:'💝',t:'out'},{n:'Sedekah saudara',e:'🤝',t:'out'},{n:'sedekah masjid',e:'🕌',t:'out'},{n:'sedekah bencana',e:'🆘',t:'out'},{n:'qurban',e:'🐐',t:'out'},{n:'idul fitri',e:'🎉',t:'out'},
   {n:'kebutuhan digital',e:'💾',t:'out'},{n:'obat-obatan',e:'💊',t:'out'},{n:'bpjs',e:'🏥',t:'out'},{n:'Kesehatan',e:'🏥',t:'out'},
   {n:'Hiburan',e:'🎮',t:'out'},{n:'kegiatan',e:'🏸',t:'out'},{n:'laundry',e:'🧺',t:'out'},
-  {n:'Kebutuhan Rumah',e:'🏠',t:'out'},{n:'Kebutuhan Bulanan',e:'📅',t:'out'},{n:'Kebutuhan Sehari-hari',e:'🧴',t:'out'},{n:'upgrade omah',e:'🔨',t:'out'},
-  {n:'Investasi Keluarga',e:'👪',t:'out'},{n:'Komunitas',e:'👥',t:'out'},{n:'les',e:'📚',t:'out'},{n:'dodol barang',e:'📦',t:'out'},{n:'Anomali',e:'🧩',t:'out'},{n:'Lainnya',e:'📝',t:'out'},
+  {n:'Kebutuhan Rumah',e:'🏠',t:'out'},{n:'Kebutuhan Bulanan',e:'📅',t:'out'},{n:'Kebutuhan Sehari-hari',e:'🧴',t:'out'},
+  {n:'Komunitas',e:'👥',t:'out'},{n:'Lainnya',e:'📝',t:'out'},
   {n:'Gaji Bulanan',e:'💼',t:'in'},{n:'Freelance',e:'💻',t:'in'},{n:'Investasi',e:'📈',t:'in'},{n:'Lainnya (Pemasukan)',e:'💰',t:'in'},
 ];
 const catEmoji=n=>{const q=String(n).toLowerCase();const c=CATS.find(x=>x.n.toLowerCase()===q);return c?c.e:'📝'};
@@ -1550,7 +1550,7 @@ const BCATS=[['makan','🍽️','Makan dan Minum'],['motor','⛽','Motor'],['bel
   ['shopee','🛍️','Belanja Shopee'],['sedekah','🤲','sedekah'],['sedekahortu','💝','sedekah ortu'],
   ['sedekahjumat','🕌','Sedekah Jumat'],['digital','💾','kebutuhan digital'],['kegiatan','🏸','kegiatan'],
   ['obat','💊','obat-obatan'],['laundry','🧺','laundry'],['pulsa','📱','Pulsa'],
-  ['transport','🚗','Transportasi'],['rumah','🏠','Kebutuhan Rumah'],['upgrade','🔨','upgrade omah'],['hiburan','🎮','Hiburan']];
+  ['transport','🚗','Transportasi'],['rumah','🏠','Kebutuhan Rumah'],['hiburan','🎮','Hiburan']];
 let BUDCAPS=JSON.parse(localStorage.getItem('genggamBudCap')||'null')||[
   {id:'makan',cap:1000000},{id:'motor',cap:500000},{id:'belanja',cap:500000}];
 BUDCAPS=BUDCAPS.filter(b=>BCATS.find(c=>c[0]===b.id));
@@ -1786,6 +1786,141 @@ document.querySelectorAll('#sw span').forEach(s=>s.onclick=()=>{
   phone.dataset.t=s.dataset.t;
   document.documentElement.style.setProperty('--acc',s.dataset.t==='v2'?'#A3E635':'#3b82f6');
   toast(s.dataset.t==='v2'?'🔥 Tema Ember':'💙 Tema v1 (sekarang)',s.dataset.t!=='v2');});
+</script>
+<!-- ===== GENGGAM REAL ENGINE — Gemini BYO-key + export beneran (override simulasi prototype) ===== -->
+<style>
+#gkModal{position:fixed;inset:0;z-index:99970;background:rgba(0,0,0,.6);display:none;align-items:center;justify-content:center;padding:20px}
+#gkModal.show{display:flex}
+#gkModal .gkc{width:100%;max-width:340px;background:var(--card,#16161f);border:1px solid rgba(255,255,255,.1);border-radius:18px;padding:22px;color:#f1f5f9;font-size:14px}
+#gkModal h4{margin:0 0 8px;font-size:17px}
+#gkModal p{color:#94a3b8;font-size:12.5px;line-height:1.55;margin:0 0 12px}
+#gkModal ol{color:#94a3b8;font-size:12px;margin:0 0 12px;padding-left:18px;line-height:1.6}
+#gkModal input{width:100%;box-sizing:border-box;background:rgba(0,0,0,.3);border:1px solid rgba(255,255,255,.14);border-radius:11px;padding:11px 12px;color:#f1f5f9;font-size:13px;outline:none}
+#gkModal .gkb{display:flex;gap:8px;margin-top:12px}
+#gkModal button{flex:1;border:0;border-radius:11px;padding:11px;font-weight:700;cursor:pointer;font-size:13.5px}
+#gkModal .gksave{background:#A3E635;color:#111827}
+#gkModal .gkclose{background:rgba(255,255,255,.08);color:#cbd5e1}
+#gkModal a{color:#A3E635;font-weight:700;text-decoration:none}
+.finkeybar{margin:0 14px 10px;background:rgba(163,230,53,.1);border:1px solid rgba(163,230,53,.3);border-radius:12px;padding:9px 12px;font-size:12px;color:#cbd5e1;display:flex;align-items:center;gap:8px}
+.finkeybar b{color:#A3E635;cursor:pointer;white-space:nowrap}
+</style>
+<div id="gkModal">
+  <div class="gkc">
+    <h4>🔑 API Key Gemini (gratis)</h4>
+    <p>Fitur AI (Fin, kategori otomatis, scan struk) jalan pakai key Gemini <b>milikmu sendiri</b> — gratis dari Google, datamu tetap privat.</p>
+    <ol><li>Buka <a href="https://aistudio.google.com/app/apikey" target="_blank" rel="noopener">aistudio.google.com/app/apikey</a></li><li>Login Google → "Create API key"</li><li>Salin key-nya, tempel di bawah</li></ol>
+    <input id="gkIn" placeholder="AIzaSy..." autocomplete="off" spellcheck="false">
+    <div class="gkb"><button class="gkclose" onclick="document.getElementById('gkModal').classList.remove('show')">Nanti</button><button class="gksave" onclick="gkSave()">Simpan</button></div>
+  </div>
+</div>
+<input type="file" id="ggmScanFile" accept="image/*" style="display:none">
+<script>
+/* ---- key mgmt ---- */
+const GKEY_LS='genggamKey';
+function gkey(){try{return localStorage.getItem(GKEY_LS)||''}catch(e){return ''}}
+function openKeyModal(){const el=document.getElementById('gkIn');el.value=gkey();document.getElementById('gkModal').classList.add('show');setTimeout(()=>el.focus(),80)}
+function gkSave(){const v=document.getElementById('gkIn').value.trim();try{v?localStorage.setItem(GKEY_LS,v):localStorage.removeItem(GKEY_LS)}catch(e){}
+  document.getElementById('gkModal').classList.remove('show');gkSyncPanels();toast(v?'✓ Key kesimpen — fitur AI aktif':'Key dihapus');}
+/* ---- Gemini core (chain model + pesan error jujur; 429 = kuota, BUKAN key rusak) ---- */
+const GMODELS=['gemini-2.5-flash','gemini-2.0-flash','gemini-flash-latest'];
+async function gcall(parts,json){const key=gkey();if(!key)throw{code:'nokey'};let last=null;
+  for(const m of GMODELS){try{
+    const body={contents:[{role:'user',parts:parts}]};if(json)body.generationConfig={responseMimeType:'application/json'};
+    const r=await fetch('https://generativelanguage.googleapis.com/v1beta/models/'+m+':generateContent?key='+encodeURIComponent(key),{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)});
+    if(r.status===429){throw{code:'quota'}}
+    if(r.status===400||r.status===403){last={code:'badkey'};continue}
+    if(!r.ok){last={code:'http'};continue}
+    const d=await r.json();const t=(((d.candidates||[])[0]||{}).content||{}).parts;const txt=(t||[]).map(p=>p.text||'').join('');
+    if(!txt){last={code:'empty'};continue}
+    return txt;
+  }catch(e){if(e&&e.code==='quota')throw e;last=e||{code:'fail'}}}
+  throw last||{code:'fail'};}
+function gErrMsg(e){if(!e)return 'Gagal nyambung — coba lagi ya.';
+  if(e.code==='nokey')return 'Belum ada API key — pasang dulu (gratis 2 menit).';
+  if(e.code==='quota')return 'Batas gratis Gemini lagi penuh (bukan error) — tunggu ±1 menit lalu coba lagi.';
+  if(e.code==='badkey')return 'Key-nya ditolak Google — cek lagi di aistudio.google.com/app/apikey.';
+  return 'Gagal nyambung ke Gemini — cek internet, lalu coba lagi.';}
+/* ---- fcCatat REAL: kategori via Gemini, fallback kamus lokal ---- */
+const GCATS=['Makan dan Minum','Transportasi','Kebutuhan Bulanan','Pulsa','Hiburan','Kesehatan','Belanja','Tabungan','Sedekah','Freelance','Gaji Bulanan','Lainnya'];
+function fcCatat(){const inp=document.getElementById('fcIn'),v=inp.value.trim();if(!v)return;
+  const p=parseNLP(v);if(!p){toast('Format: "nama jumlah", mis. "bakso 15rb"',1);return}
+  inp.value='';
+  if(!p.needsAI){showFcCard(p);return}
+  if(!gkey()){applyGemini(p);p.src='lokal';showFcCard(p);return}
+  finThinking('fcResult');
+  gcall([{text:'Kategorikan transaksi keuangan pribadi Indonesia ini: "'+p.nama+'". Pilih PERSIS satu dari: '+GCATS.join(', ')+'. Balas JSON: {"kategori":"...","masuk":true/false} — masuk=true cuma kalau ini pemasukan (gaji/freelance/jualan).'}],true)
+  .then(t=>{try{const j=JSON.parse(t);if(GCATS.includes(j.kategori)){p.kat=j.kategori;p.masuk=!!j.masuk;p.em=catEmoji(p.kat);p.src='ai';p.needsAI=false}else{applyGemini(p);p.src='lokal'}}catch(e){applyGemini(p);p.src='lokal'}showFcCard(p)})
+  .catch(e=>{applyGemini(p);p.src='lokal';showFcCard(p);if(e.code==='quota')toast(gErrMsg(e),1)});}
+/* ---- Fin chat REAL ---- */
+function finContext(){const ym=ACTIVE_YM;const cur=TX.filter(t=>ymOf(t)===ym);
+  let masuk=0,keluar=0;const kat={};cur.forEach(t=>{if(t.masuk)masuk+=t.jml;else{keluar+=t.jml;kat[t.kat]=(kat[t.kat]||0)+t.jml}});
+  const top=Object.entries(kat).sort((a,b)=>b[1]-a[1]).slice(0,5).map(x=>x[0]+' Rp'+x[1].toLocaleString('id-ID')).join(', ');
+  return 'Data user bulan '+ym+': pemasukan Rp'+masuk.toLocaleString('id-ID')+', pengeluaran Rp'+keluar.toLocaleString('id-ID')+', kategori terbesar: '+(top||'belum ada')+'. Total transaksi tercatat: '+TX.length+'.';}
+function askFin(preset){const inp=document.getElementById('finIn');const q=(preset||inp.value).trim();
+  if(!q||finBusy)return;inp.value='';finMsgs.push({role:'u',text:q});renderFin();
+  if(!gkey()){finMsgs.push({role:'a',text:'Biar gue bisa jawab beneran, pasang dulu API key Gemini kamu (gratis dari Google, 2 menit). Klik tombol 🔑 di atas ya.'});renderFin();return}
+  finBusy=true;const T=document.getElementById('finTyping');T.style.display='flex';
+  const hist=finMsgs.slice(-9,-1).map(m=>(m.role==='u'?'User: ':'Fin: ')+m.text).join('\n');
+  gcall([{text:'Kamu Fin, asisten keuangan pribadi di app Genggam. Jawab dalam Bahasa Indonesia casual (gue-lo), SINGKAT (maks 120 kata), konkret dan actionable, tanpa menghakimi. Jangan menyebut dirimu AI/model. '+finContext()+'\n\nRiwayat:\n'+hist+'\n\nUser: '+q+'\nFin:'}])
+  .then(t=>{finMsgs.push({role:'a',text:t.trim()})})
+  .catch(e=>{finMsgs.push({role:'a',text:'⚠️ '+gErrMsg(e)})})
+  .finally(()=>{T.style.display='none';renderFin();finBusy=false});}
+/* ---- Scan struk REAL (Gemini Vision) ---- */
+function scanStep(n){const b=document.getElementById('scanBody');
+  if(n===1){b.innerHTML='<div class="scancam"><span class="corner" style="top:14px;left:14px;border-right:0;border-bottom:0"></span><span class="corner" style="top:14px;right:14px;border-left:0;border-bottom:0"></span><span class="corner" style="bottom:14px;left:14px;border-right:0;border-top:0"></span><span class="corner" style="bottom:14px;right:14px;border-left:0;border-top:0"></span><p style="font-size:12px;color:var(--ink3);text-align:center;padding:0 20px">Foto struk belanjaanmu — Fin yang baca &amp; catat totalnya</p></div>'
+    +'<button class="psave" style="position:static;width:100%;margin-top:16px" onclick="ggmScanPick()">📸 Ambil foto struk</button>'
+    +'<p style="text-align:center;font-size:11px;color:var(--ink3);margin-top:10px">hasil dibaca AI — selalu bisa kamu edit sebelum disimpan</p>';}
+  if(n===2){b.innerHTML='<div style="text-align:center;padding:40px 20px"><div class="thinking" style="justify-content:center"><span class="mav mavorb"></span><span>🔍 Fin lagi baca struknya…</span></div><p style="font-size:11.5px;color:var(--ink3);margin-top:14px">±5 detik, tergantung sinyal</p></div>';}
+  if(n===3){const s=window._scanData||{};b.innerHTML='<div class="scanbadge">🤖 Dibaca AI — cek dulu sebelum simpan</div>'
+    +'<div class="scanfield"><div><small>NAMA</small><b>'+(s.nama||'Belanja')+'</b></div></div>'
+    +'<div class="scanfield"><div><small>KATEGORI</small><b>'+catEmoji(s.kat||'Belanja')+' '+(s.kat||'Belanja')+'</b></div></div>'
+    +'<div class="scanfield"><div><small>TOTAL'+(s.items?' ('+s.items+' item)':'')+'</small><b style="color:#EF4444;font-size:16px">− Rp '+(s.jml||0).toLocaleString('id-ID')+'</b></div></div>'
+    +'<button class="psave" style="position:static;width:100%;margin-top:16px" onclick="scanSave()">✓ Simpan transaksi</button>';}}
+function ggmScanPick(){if(!gkey()){openKeyModal();return}document.getElementById('ggmScanFile').click()}
+document.getElementById('ggmScanFile').addEventListener('change',function(){const f=this.files[0];this.value='';if(!f)return;
+  const rd=new FileReader();rd.onload=()=>ggmScanRun(rd.result);rd.readAsDataURL(f);});
+function ggmScanRun(dataUrl){scanStep(2);const m=dataUrl.match(/^data:(image\/\w+);base64,(.+)$/);
+  if(!m){scanStep(1);toast('File gambarnya gak kebaca — coba lagi',1);return}
+  gcall([{inline_data:{mime_type:m[1],data:m[2]}},{text:'Baca struk belanja ini. Balas JSON: {"toko":"nama toko","total":angka total dalam rupiah tanpa titik,"item":jumlah item,"kategori":"pilih satu: '+GCATS.join(' / ')+'"}. Kalau gambar BUKAN struk, balas {"error":"bukan struk"}.'}],true)
+  .then(t=>{const j=JSON.parse(t);
+    if(j.error||!j.total){scanStep(1);toast('Hmm, itu kayaknya bukan struk — coba foto ulang',1);return}
+    window._scanData={nama:'Belanja '+(j.toko||''),kat:GCATS.includes(j.kategori)?j.kategori:'Belanja',jml:Math.round(j.total),items:j.item||null};scanStep(3);})
+  .catch(e=>{scanStep(1);toast('⚠️ '+gErrMsg(e),1);if(e.code==='nokey')openKeyModal();});}
+function scanSave(){const s=window._scanData;if(!s||!s.jml){toast('Belum ada hasil scan',1);return}
+  addRow(s.nama.trim(),catEmoji(s.kat),s.kat,s.jml,false);window._scanData=null;closeScan();
+  celebrate('✓ Struk kebaca & tercatat — Rp '+s.jml.toLocaleString('id-ID')+' 🎉');}
+/* ---- Backup & Export REAL ---- */
+function ggmDl(name,text,mime){try{const b=new Blob([text],{type:mime});const a=document.createElement('a');
+  a.href=URL.createObjectURL(b);a.download=name;document.body.appendChild(a);a.click();setTimeout(()=>{URL.revokeObjectURL(a.href);a.remove()},400);}catch(e){}
+  if(navigator.clipboard)navigator.clipboard.writeText(text).then(()=>toast('✓ '+name+' ke-download + isi kesalin (jaga-jaga)')).catch(()=>toast('✓ '+name+' ke-download'));else toast('✓ '+name+' ke-download');}
+function ggmCsv(all){const rows=TX.filter(t=>all||ymOf(t)===ACTIVE_YM);
+  if(!rows.length){toast('Belum ada transaksi buat di-export',1);return}
+  const csv='tanggal,nama,kategori,jumlah,jenis\n'+rows.map(t=>[t.tgl,'"'+t.nama.replace(/"/g,'""')+'"','"'+t.kat.replace(/"/g,'""')+'"',t.jml,t.masuk?'masuk':'keluar'].join(',')).join('\n');
+  ggmDl('genggam-'+(all?'semua':ACTIVE_YM)+'.csv',csv,'text/csv');}
+function ggmBackup(){const d={v:2,at:new Date().toISOString(),tx:TX.map(t=>({id:t.id,tgl:t.tgl,nama:t.nama,kat:t.kat,jml:t.jml,masuk:t.masuk}))};
+  try{d.budcap=JSON.parse(localStorage.getItem('genggamBudCap')||'null');d.qa=JSON.parse(localStorage.getItem('genggamQA')||'null')}catch(e){}
+  ggmDl('genggam-backup-'+new Date().toISOString().slice(0,10)+'.json',JSON.stringify(d),'application/json');}
+function ggmRestorePick(){const i=document.createElement('input');i.type='file';i.accept='.json,application/json';
+  i.onchange=()=>{const f=i.files[0];if(!f)return;const rd=new FileReader();
+    rd.onload=()=>{try{const d=JSON.parse(rd.result);if(!d.tx||!Array.isArray(d.tx))throw 0;
+      if(!confirm('Pulihkan '+d.tx.length+' transaksi dari backup? Data sekarang bakal DIGANTI.'))return;
+      localStorage.setItem(TX_KEY,JSON.stringify(d.tx));if(d.budcap)localStorage.setItem('genggamBudCap',JSON.stringify(d.budcap));if(d.qa)localStorage.setItem('genggamQA',JSON.stringify(d.qa));
+      location.reload();}catch(e){toast('File backup-nya gak valid',1)}};rd.readAsText(f);};i.click();}
+function openBackup(){const C=document.getElementById('bsheetC');
+  C.innerHTML='<h4>📤 Backup & Export</h4><small style="font-size:11px;color:var(--ink3)">amanin datamu — file kesimpen di perangkatmu</small>'
+  +[['📄','Export CSV bulan ini','buka di Excel/Sheets','ggmCsv(false)'],['🗂️','Export CSV semua','seluruh riwayat','ggmCsv(true)'],['💾','Backup lengkap (JSON)','transaksi + budget + panel','ggmBackup()'],['📥','Pulihkan backup','dari file JSON','ggmRestorePick()'],['🔑','API key Gemini','pasang / ganti / hapus','openKeyModal()']].map(x=>'<div class="srow" onclick="'+x[3]+'"><div class="em">'+x[0]+'</div><p>'+x[1]+'<small>'+x[2]+'</small></p></div>').join('');
+  openBsheet();}
+/* ---- label panel jujur + banner key di Fin ---- */
+function gkSyncPanels(){const k=!!gkey();
+  if(typeof PANELS!=='undefined'){PANELS.fin.s=k?'Gemini · key kepasang':'Gemini · pasang key gratis';PANELS.fin.f=k?'Aktif':'Setup 2 menit';
+    PANELS.scan.s='Gemini Vision';PANELS.scan.f=k?'Siap pakai':'perlu key';PANELS.csv.s='CSV & JSON';PANELS.csv.f='beneran ke-download';
+    if(typeof renderQA==='function')renderQA();}
+  const fp=document.getElementById('finPage');if(fp){let bar=document.getElementById('finKeyBar');
+    if(!k&&!bar){bar=document.createElement('div');bar.id='finKeyBar';bar.className='finkeybar';
+      bar.innerHTML='<span>🔑 Fin butuh API key Gemini kamu (gratis) biar bisa jawab beneran.</span><b onclick="openKeyModal()">Pasang →</b>';
+      const msgs=document.getElementById('finMsgs');if(msgs&&msgs.parentNode)msgs.parentNode.insertBefore(bar,msgs);}
+    if(k&&bar)bar.remove();}}
+gkSyncPanels();
 </script>
 
 <!-- ===== GENGGAM GATE (kode akses + demo) ===== -->
