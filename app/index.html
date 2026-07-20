@@ -9,7 +9,7 @@
 <style>
   :root{
     --page:#060704; --ink:#F9FAF8; --ink2:#A6AC9E; --ink3:#555E4E;
-    --acc:#A3E635; --accD:#4D7C0F; --gold:#BEF264;
+    --acc:#3B82F6; --accD:#1D4ED8; --gold:#60A5FA;
   }
   *{margin:0;padding:0;box-sizing:border-box}
   html,body{background:var(--page);color:var(--ink);font-family:'Plus Jakarta Sans',sans-serif;overflow-x:hidden}
@@ -17,9 +17,9 @@
 
   canvas#amb{position:fixed;top:0;right:0;bottom:0;left:0;z-index:0;pointer-events:none}
   #glow{position:fixed;width:520px;height:520px;border-radius:50%;pointer-events:none;z-index:1;
-    background:radial-gradient(circle,rgba(163,230,53,.10),transparent 65%);transform:translate(-50%,-50%);transition:opacity .4s}
+    background:radial-gradient(circle,rgba(59,130,246,.10),transparent 65%);transform:translate(-50%,-50%);transition:opacity .4s}
   .orb{position:fixed;border-radius:50%;filter:blur(90px);z-index:0;pointer-events:none;opacity:.5}
-  .orb.a{width:420px;height:420px;background:#365314;top:-120px;left:-120px;animation:drift 14s ease-in-out infinite alternate}
+  .orb.a{width:420px;height:420px;background:#1E3A8A;top:-120px;left:-120px;animation:drift 14s ease-in-out infinite alternate}
   .orb.b{width:360px;height:360px;background:#1A2E05;bottom:-100px;right:-80px;animation:drift 18s ease-in-out infinite alternate-reverse}
   @keyframes drift{to{transform:translate(60px,40px) scale(1.15)}}
 
@@ -32,7 +32,7 @@
   @keyframes ping{0%{transform:scale(.6);opacity:1}100%{transform:scale(1.9);opacity:0}}
 
   h1{font-size:clamp(52px,8vw,96px);font-weight:800;letter-spacing:-.045em;line-height:.95}
-  h1 .fire{background:linear-gradient(100deg,#A3E635 10%,#BEF264 45%,#D9F99D 60%,#A3E635 90%);background-size:200% 100%;
+  h1 .fire{background:linear-gradient(100deg,#3B82F6 10%,#60A5FA 45%,#93C5FD 60%,#3B82F6 90%);background-size:200% 100%;
     -webkit-background-clip:text;background-clip:text;color:transparent;animation:sheen 5s linear infinite}
   @keyframes sheen{to{background-position:200% 0}}
   .sub{color:var(--ink2);font-size:17px;line-height:1.7;max-width:440px;margin-top:20px}
@@ -60,7 +60,7 @@
   .stage{perspective:1400px}
   .phone{width:375px;height:790px;border-radius:48px;position:relative;transform-style:preserve-3d;
     background:#0a0908;border:1px solid rgba(255,255,255,.12);
-    box-shadow:0 0 0 10px #131010,0 40px 90px rgba(0,0,0,.7),0 0 120px rgba(163,230,53,.13);
+    box-shadow:0 0 0 10px #131010,0 40px 90px rgba(0,0,0,.7),0 0 120px rgba(59,130,246,.13);
     transition:transform .18s ease-out;animation:floaty 7s ease-in-out infinite;overflow:hidden}
   @keyframes floaty{0%,100%{margin-top:0}50%{margin-top:-14px}}
   .phone::before{content:'';position:absolute;top:14px;left:50%;transform:translateX(-50%);width:118px;height:30px;background:#000;border-radius:20px;z-index:60}
@@ -69,12 +69,12 @@
 
   /* app theming — toggle v1/v2 */
   .app{position:absolute;top:0;right:0;bottom:0;left:0;padding:58px 0 0;display:flex;flex-direction:column;transition:background .5s;
-    --abg:#0A0C08;--card:#191C16;--card2:#292524;--aacc:#A3E635;--aaccD:#4D7C0F;--aglow:rgba(163,230,53,.24);
-    --g1:#365314;--g2:#84CC16;--g3:#191C16;background:var(--abg);color:var(--ink)}
+    --abg:#0A0C08;--card:#191C16;--card2:#292524;--aacc:#3B82F6;--aaccD:#1D4ED8;--aglow:rgba(59,130,246,.24);
+    --g1:#1E3A8A;--g2:#2563EB;--g3:#191C16;background:var(--abg);color:var(--ink)}
   .phone[data-t="v1"] .app{--abg:#0d0d14;--card:#16161f;--card2:#1e1e2c;--aacc:#3b82f6;--aaccD:#1d4ed8;--aglow:rgba(59,130,246,.24);
     --g1:#1e3a8a;--g2:#2563eb;--g3:#0f172a}
   /* MODE TERANG (light) — override token, teks jadi gelap, kontras aman */
-  .app.light{--abg:#F4F1EC;--card:#FFFFFF;--card2:#ECE7DF;--bgInput:#F1ECE4;--aglow:rgba(163,230,53,.16);
+  .app.light{--abg:#F4F1EC;--card:#FFFFFF;--card2:#ECE7DF;--bgInput:#F1ECE4;--aglow:rgba(59,130,246,.16);
     --ink:#191C16;--ink2:#555E4E;--ink3:#9C948C;background:#F4F1EC}
   .app.light .qa,.app.light .st,.app.light .chart,.app.light .brow,.app.light .txr,.app.light .fin,.app.light .hm,.app.light .anc,.app.light .rings,.app.light .monthbar,.app.light .hsearch,.app.light .hsum div,.app.light .fc,.app.light .goalc,.app.light .noteitem,.app.light .nlpcard,.app.light .chip,.app.light .mp,.app.light .tp,.app.light .cd,.app.light .sc,.app.light .catnote,.app.light .bulkarea,.app.light .pin input,.app.light .fld input,.app.light .picker,.app.light .fintabs,.app.light .scanfield,.app.light .hdim,.app.light .compsel .cm,.app.light .compbar,.app.light .compdiff,.app.light .srow,.app.light .sheet,.app.light .confirm .box{border-color:rgba(0,0,0,.1)!important}
   .app.light .phdr,.app.light .fintabs,.app.light .nav{border-color:rgba(0,0,0,.08)!important}
@@ -106,12 +106,12 @@
 
   .fin{margin-top:14px;display:flex;align-items:center;gap:12px;background:var(--card);border:1px solid rgba(255,255,255,.07);border-radius:16px;padding:13px 15px;cursor:pointer;transition:.25s}
   .fin:hover{border-color:var(--aacc);transform:translateY(-1px)}
-  .fin .ai{width:36px;height:36px;border-radius:50%;background:radial-gradient(circle at 38% 32%,#D9F99D 0%,#A3E635 42%,#4D7C0F 100%);box-shadow:0 0 12px rgba(163,230,53,.5),inset 0 -2px 6px rgba(54,83,20,.55),inset 0 2px 5px rgba(255,255,255,.32);display:grid;place-items:center;font-size:0;position:relative;flex-shrink:0}
+  .fin .ai{width:36px;height:36px;border-radius:50%;background:radial-gradient(circle at 38% 32%,#93C5FD 0%,#3B82F6 42%,#1D4ED8 100%);box-shadow:0 0 12px rgba(59,130,246,.5),inset 0 -2px 6px rgba(54,83,20,.55),inset 0 2px 5px rgba(255,255,255,.32);display:grid;place-items:center;font-size:0;position:relative;flex-shrink:0}
   .fin .ai::after{content:'';position:absolute;top:-5px;right:-5px;bottom:-5px;left:-5px;border-radius:14px;border:1.5px solid var(--aacc);opacity:.5;animation:ping 2.2s ease-out infinite}
   .fin p{font-size:12.5px;color:var(--ink2)}
   .fin p b{display:block;color:var(--ink);font-size:13.5px;font-weight:700}
 
-  .streak{margin-top:14px;background:linear-gradient(135deg,rgba(190,242,100,.12),transparent 70%),var(--card);border:1px solid rgba(190,242,100,.25);border-radius:16px;padding:13px 15px;display:flex;align-items:center;gap:12px}
+  .streak{margin-top:14px;background:linear-gradient(135deg,rgba(96,165,250,.12),transparent 70%),var(--card);border:1px solid rgba(96,165,250,.25);border-radius:16px;padding:13px 15px;display:flex;align-items:center;gap:12px}
   .streak .fl{font-size:22px;animation:flick 1.6s ease-in-out infinite}
   @keyframes flick{0%,100%{transform:scale(1) rotate(-3deg)}50%{transform:scale(1.18) rotate(4deg)}}
   .streak p{font-size:12px;color:var(--ink2)}
@@ -236,7 +236,7 @@
   .brow{display:flex;align-items:center;gap:12px;background:var(--card);border:1px solid rgba(255,255,255,.06);border-radius:14px;padding:12px 14px;margin-top:9px;position:relative;cursor:pointer;transition:border-color .2s;animation:rise .5s both}
   .brow:hover{border-color:var(--aacc)}
   .brow.over{border-color:rgba(239,68,68,.45)}
-  .fill.overf{background:linear-gradient(90deg,#EF4444,#A3E635)}
+  .fill.overf{background:linear-gradient(90deg,#EF4444,#3B82F6)}
   #blist.edit .brow{animation:wig .34s ease-in-out infinite alternate;cursor:default}
   #blist.edit .brow:nth-child(2n){animation-delay:.17s}
   .shake{animation:shk .55s}
@@ -255,8 +255,8 @@
 
   /* ===== sistem tombol premium (glossy ember, konsisten) ===== */
   .addp,.padd,.psave,.estate button,.nabung,.nlpcard .simpan,.confirm .chapus,.snd,.fab{
-    background:linear-gradient(165deg,#D9F99D -12%,#A3E635 46%,#DB5C0E 115%)!important;
-    box-shadow:inset 0 1px 0 rgba(255,255,255,.4),inset 0 -2px 5px rgba(54,83,20,.5),0 5px 14px rgba(163,230,53,.28)!important;
+    background:linear-gradient(165deg,#93C5FD -12%,#3B82F6 46%,#1D4ED8 115%)!important;
+    box-shadow:inset 0 1px 0 rgba(255,255,255,.4),inset 0 -2px 5px rgba(54,83,20,.5),0 5px 14px rgba(59,130,246,.28)!important;
     color:#3A1503!important;border:0!important;letter-spacing:-.01em}
   .addp:active,.padd:active,.psave:active,.estate button:active,.nabung:active,.nlpcard .simpan:active,.snd:active,.fab:active{transform:scale(.94)}
   /* tombol sekunder (netral) konsisten */
@@ -335,7 +335,7 @@
   .fcards.grabbing .fc{pointer-events:none}
   .fcards::-webkit-scrollbar{display:none}
   .fc{min-width:198px;height:122px;border-radius:18px;position:relative;overflow:hidden;flex-shrink:0;cursor:pointer;
-    background:radial-gradient(circle at 30% 25%,rgba(163,230,53,.35),transparent 55%),linear-gradient(135deg,#3a1608,#191C16);
+    background:radial-gradient(circle at 30% 25%,rgba(59,130,246,.35),transparent 55%),linear-gradient(135deg,#3a1608,#191C16);
     border:1px solid rgba(255,255,255,.08);transition:.25s}
   .fc .fcbg{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;z-index:0;animation:fcin .4s}
   @keyframes fcin{from{opacity:0}to{opacity:1}}
@@ -379,17 +379,17 @@
   .phdr{display:flex;align-items:center;gap:12px;padding:52px 16px 13px;background:var(--card);border-bottom:1px solid rgba(255,255,255,.07)}
   .phdr .bk{width:30px;height:30px;border-radius:9px;background:var(--card2);display:grid;place-items:center;font-size:16px;cursor:pointer}
   .phdr .av{width:38px;height:38px;border-radius:50%;position:relative;flex-shrink:0;font-size:0;
-    background:radial-gradient(circle at 38% 32%,#D9F99D 0%,#A3E635 42%,#4D7C0F 100%);
-    box-shadow:0 0 14px rgba(163,230,53,.5),inset 0 -3px 8px rgba(54,83,20,.6),inset 0 3px 6px rgba(255,255,255,.35)}
+    background:radial-gradient(circle at 38% 32%,#93C5FD 0%,#3B82F6 42%,#1D4ED8 100%);
+    box-shadow:0 0 14px rgba(59,130,246,.5),inset 0 -3px 8px rgba(54,83,20,.6),inset 0 3px 6px rgba(255,255,255,.35)}
   .phdr .av::after{content:'';position:absolute;top:-2px;right:-2px;width:9px;height:9px;border-radius:50%;background:#22C55E;border:2px solid var(--card)}
   /* EMBER ORB — hero empty-state Fin */
   .finhero{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:20px;gap:16px}
   .orbwrap{position:relative;width:150px;height:150px;display:grid;place-items:center}
   .orbwrap .orb2{width:130px;height:130px;border-radius:50%;
-    background:radial-gradient(circle at 50% 44%,#0A0C08 28%,#84CC16 47%,#A3E635 55%,#BEF264 61%,#365314 74%,rgba(25,28,22,0) 80%);
-    box-shadow:0 0 60px rgba(163,230,53,.45),inset 0 0 40px rgba(0,0,0,.6);animation:orbPulse 3.4s ease-in-out infinite}
-  @keyframes orbPulse{0%,100%{transform:scale(1);box-shadow:0 0 60px rgba(163,230,53,.4)}50%{transform:scale(1.05);box-shadow:0 0 80px rgba(163,230,53,.6)}}
-  .orbwrap .ring2{position:absolute;inset:0;border-radius:50%;border:1px solid rgba(163,230,53,.25);animation:orbRing 3.4s ease-out infinite}
+    background:radial-gradient(circle at 50% 44%,#0A0C08 28%,#2563EB 47%,#3B82F6 55%,#60A5FA 61%,#1E3A8A 74%,rgba(25,28,22,0) 80%);
+    box-shadow:0 0 60px rgba(59,130,246,.45),inset 0 0 40px rgba(0,0,0,.6);animation:orbPulse 3.4s ease-in-out infinite}
+  @keyframes orbPulse{0%,100%{transform:scale(1);box-shadow:0 0 60px rgba(59,130,246,.4)}50%{transform:scale(1.05);box-shadow:0 0 80px rgba(59,130,246,.6)}}
+  .orbwrap .ring2{position:absolute;inset:0;border-radius:50%;border:1px solid rgba(59,130,246,.25);animation:orbRing 3.4s ease-out infinite}
   @keyframes orbRing{0%{transform:scale(.8);opacity:.8}100%{transform:scale(1.25);opacity:0}}
   .finhero h3{font-size:20px;font-weight:800;letter-spacing:-.02em}
   .finhero p{font-size:13px;color:var(--ink2);max-width:250px;line-height:1.55}
@@ -398,7 +398,7 @@
   .phdr .nm b{font-size:15px;font-weight:800;display:block}
   .phdr .nm small{font-size:11px;color:var(--ink2)}
   .phdr .rf{font-size:16px;color:var(--ink2);cursor:pointer;padding:6px}
-  .mavorb{background:radial-gradient(circle at 38% 32%,#D9F99D 0%,#A3E635 42%,#4D7C0F 100%)!important;box-shadow:0 0 9px rgba(163,230,53,.5),inset 0 -2px 5px rgba(54,83,20,.55),inset 0 2px 4px rgba(255,255,255,.3);color:transparent!important;font-size:0!important}
+  .mavorb{background:radial-gradient(circle at 38% 32%,#93C5FD 0%,#3B82F6 42%,#1D4ED8 100%)!important;box-shadow:0 0 9px rgba(59,130,246,.5),inset 0 -2px 5px rgba(54,83,20,.55),inset 0 2px 4px rgba(255,255,255,.3);color:transparent!important;font-size:0!important}
   /* Fin tabs + panes */
   .fintabs{display:flex;gap:5px;padding:8px 12px;background:var(--card);border-bottom:1px solid rgba(255,255,255,.06)}
   .ftab{flex:1;display:flex;align-items:center;justify-content:center;gap:5px;padding:9px 6px;border-radius:11px;font-size:12px;font-weight:700;color:var(--ink2);cursor:pointer;transition:.2s}
@@ -528,7 +528,7 @@
   .nlpcard .edit2{background:var(--card2);color:var(--ink)}
   .nlpcard .batal{background:transparent;color:var(--ink3);border:1px solid rgba(255,255,255,.1)!important}
   .srcb{display:inline-flex;align-items:center;font-size:10px;font-weight:800;padding:3px 9px;border-radius:999px}
-  .srcb.lokal{background:var(--bg-warning,rgba(190,242,100,.16));color:#BEF264}
+  .srcb.lokal{background:var(--bg-warning,rgba(96,165,250,.16));color:#60A5FA}
   .srcb.ai{background:var(--bg-pro,rgba(139,92,246,.16));color:#A78BFA}
   .thinking{display:flex;align-items:center;gap:10px;background:var(--card);border:1px solid rgba(167,139,250,.35);border-radius:15px;padding:13px 15px;margin-top:10px;font-size:12.5px;color:var(--ink2);animation:pop .3s}
   .thinking .mavorb{width:26px;height:26px;border-radius:50%;flex-shrink:0;animation:orbPulse 1.2s ease-in-out infinite}
@@ -542,7 +542,7 @@
   @keyframes flare{0%{transform:scale(1)}40%{transform:scale(1.5)}100%{transform:scale(1)}}
 
   /* ===== #9 Scan Struk mock ===== */
-  .scancam{height:280px;border-radius:18px;border:2px dashed rgba(163,230,53,.4);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;background:var(--card);position:relative;overflow:hidden}
+  .scancam{height:280px;border-radius:18px;border:2px dashed rgba(59,130,246,.4);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;background:var(--card);position:relative;overflow:hidden}
   .scancam .cico{font-size:52px;opacity:.6}
   .scancam p{font-size:13px;color:var(--ink2);max-width:220px;text-align:center}
   .scancam .corner{position:absolute;width:26px;height:26px;border:3px solid var(--aacc)}
@@ -590,8 +590,8 @@
   .onbskip{font-size:13px;font-weight:700;color:var(--ink2);cursor:pointer;padding:4px 8px}
   .onbbody{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:16px}
   .onbico{width:150px;height:150px;display:grid;place-items:center;position:relative;margin-bottom:22px}
-  .onbico .oorb{width:130px;height:130px;border-radius:50%;background:radial-gradient(circle at 50% 44%,#0A0C08 28%,#84CC16 47%,#A3E635 55%,#BEF264 61%,#365314 74%,rgba(25,28,22,0) 80%);box-shadow:0 0 60px rgba(163,230,53,.45),inset 0 0 40px rgba(0,0,0,.6);animation:orbPulse 3.4s ease-in-out infinite}
-  .onbico .oem{font-size:80px;filter:drop-shadow(0 8px 24px rgba(163,230,53,.4))}
+  .onbico .oorb{width:130px;height:130px;border-radius:50%;background:radial-gradient(circle at 50% 44%,#0A0C08 28%,#2563EB 47%,#3B82F6 55%,#60A5FA 61%,#1E3A8A 74%,rgba(25,28,22,0) 80%);box-shadow:0 0 60px rgba(59,130,246,.45),inset 0 0 40px rgba(0,0,0,.6);animation:orbPulse 3.4s ease-in-out infinite}
+  .onbico .oem{font-size:80px;filter:drop-shadow(0 8px 24px rgba(59,130,246,.4))}
   .onbbody h3{font-size:26px;font-weight:800;letter-spacing:-.02em;line-height:1.15;max-width:300px;margin-bottom:12px}
   .onbbody h3 span{color:var(--aacc)}
   .onbbody p{font-size:14px;color:var(--ink2);line-height:1.6;max-width:290px}
@@ -605,6 +605,11 @@
   .onbdots span.on{width:22px;background:var(--aacc)}
   .onbslide{display:flex;flex-direction:column;align-items:center;animation:onbin .45s cubic-bezier(.2,.8,.3,1)}
   @keyframes onbin{from{opacity:0;transform:translateX(24px)}to{opacity:1;transform:none}}
+</style>
+<style>
+:root{--acc:#3B82F6;--accD:#1D4ED8;--gold:#60A5FA}
+h1 .fire{background:linear-gradient(100deg,#3B82F6 10%,#60A5FA 45%,#93C5FD 60%,#3B82F6 90%);background-size:200% 100%;-webkit-background-clip:text;background-clip:text;color:transparent}
+.app.light{--aglow:rgba(59,130,246,.16)}
 </style>
 <link rel="manifest" href="manifest.webmanifest">
 <meta name="theme-color" content="#0d0d14">
@@ -642,7 +647,7 @@
   </div>
 
   <div class="stage rev" style="animation-delay:.35s">
-    <div class="phone" id="phone" data-t="v2">
+    <div class="phone" id="phone" data-t="v1">
       <div class="sbar"><span>9:41</span><span>▲ ▂ ▉</span></div>
       <div class="app">
         <div class="screens">
@@ -725,8 +730,8 @@
               <h4>🔥 Heatmap belanja — Juli <span>makin nyala = makin boros</span></h4>
               <div class="hmgrid" id="hmgrid"></div>
               <div class="hmleg">dikit
-                <i style="background:rgba(163,230,53,.12)"></i><i style="background:rgba(163,230,53,.35)"></i>
-                <i style="background:rgba(163,230,53,.6)"></i><i style="background:#A3E635"></i>banyak</div>
+                <i style="background:rgba(59,130,246,.12)"></i><i style="background:rgba(59,130,246,.35)"></i>
+                <i style="background:rgba(59,130,246,.6)"></i><i style="background:#3B82F6"></i>banyak</div>
             </div>
             <div class="chart" style="margin-top:12px">
               <h4>🍩 Pengeluaran per kategori <span style="font-size:10px;color:var(--ink3)">tap buat rincian</span></h4>
@@ -765,7 +770,7 @@
             <div class="monthbar"><span class="nav2" onclick="budMonth(-1)">‹</span><span class="mv" id="budMv">Juli 2026</span><span class="nav2" onclick="budMonth(1)">›</span></div>
             <div class="rings" id="rings">
               <svg width="0" height="0"><defs><linearGradient id="gradEmber" x1="0" y1="0" x2="1" y2="1">
-                <stop offset="0%" stop-color="#A3E635"/><stop offset="100%" stop-color="#BEF264"/></linearGradient></defs></svg>
+                <stop offset="0%" stop-color="#3B82F6"/><stop offset="100%" stop-color="#60A5FA"/></linearGradient></defs></svg>
             </div>
             <div class="sechead" style="margin-top:16px"><div class="sec">Pos Anggaran</div><span class="addp" id="bEditBtn" onclick="toggleBEdit()">Edit ✎</span></div>
             <div id="blist"></div>
@@ -904,7 +909,7 @@
           </div>
           <div class="pbody">
             <div class="rings" id="pdRing" style="justify-content:center;margin-bottom:6px">
-              <svg width="0" height="0"><defs><linearGradient id="gradEmber2" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#A3E635"/><stop offset="100%" stop-color="#BEF264"/></linearGradient></defs></svg>
+              <svg width="0" height="0"><defs><linearGradient id="gradEmber2" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#3B82F6"/><stop offset="100%" stop-color="#60A5FA"/></linearGradient></defs></svg>
             </div>
             <div class="sechead"><div class="sec">Transaksi pos ini</div><span class="addp" onclick="openAturJatah()">Atur jatah</span></div>
             <div id="pdList"></div>
@@ -1006,7 +1011,7 @@ for(let i=0;i<70;i++)ps.push({x:Math.random()*innerWidth,y:Math.random()*innerHe
 (function loop(){cx.clearRect(0,0,W,H);
   for(const p of ps){p.y-=p.v;p.sw+=.012;p.x+=Math.sin(p.sw)*.28;if(p.y<-8){p.y=H+8;p.x=Math.random()*W}
     const fl=.75+Math.sin(p.sw*3)*.25;
-    cx.beginPath();cx.arc(p.x,p.y,p.r,0,6.28);cx.fillStyle=`rgba(163,230,53,${p.o*fl})`;cx.fill();}
+    cx.beginPath();cx.arc(p.x,p.y,p.r,0,6.28);cx.fillStyle=`rgba(59,130,246,${p.o*fl})`;cx.fill();}
   requestAnimationFrame(loop)})();
 
 /* ---------- cursor glow + phone tilt ---------- */
@@ -1029,7 +1034,7 @@ setTimeout(()=>countUp(amt,saldo,1500),600);
 
 /* ---------- toast ---------- */
 let tmr;function toast(msg,warn){const t=document.getElementById('toast');t.textContent=msg;
-  t.style.background=warn?'#BEF264':'#22C55E';t.classList.add('show');clearTimeout(tmr);tmr=setTimeout(()=>t.classList.remove('show'),2200);}
+  t.style.background=warn?'#60A5FA':'#22C55E';t.classList.add('show');clearTimeout(tmr);tmr=setTimeout(()=>t.classList.remove('show'),2200);}
 /* icon sampah SVG (currentColor) */
 const TRASH='<svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h16M9 7V5a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2m2 0v13a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V7"/><path d="M10 11v6M14 11v6"/></svg>';
 /* haptic semantik (QW#2) */
@@ -1038,7 +1043,7 @@ function buzz(kind){if(!navigator.vibrate)return;
 /* #10 confetti perayaan */
 function celebrate(msg){const host=document.querySelector('.phone');if(!host)return;
   const wrap=document.createElement('div');wrap.className='confwrap';
-  const cols=['#A3E635','#BEF264','#22C55E','#D9F99D','#D9F99D','#84CC16','#FFFFFF'];
+  const cols=['#3B82F6','#60A5FA','#22C55E','#93C5FD','#93C5FD','#2563EB','#FFFFFF'];
   for(let i=0;i<18;i++){const s=document.createElement('span');s.className='conf';
     s.style.left=(4+Math.random()*92)+'%';s.style.background=cols[i%cols.length];
     s.style.animationDelay=(Math.random()*.35).toFixed(2)+'s';
@@ -1293,9 +1298,9 @@ function renderHealth(){const cur=statMonth(ACTIVE_YM);const rate=cur.inS?Math.m
     ['🤲 Sedekah',85,''],['🔁 Konsistensi catat',90,''],['🌱 Zero-Spend',45,'Target 8 hari/bulan, sekarang 5']];
   const score=78,grade='B';
   const b=document.getElementById('healthBody');
-  b.innerHTML=`<div class="hscore"><div class="num" style="color:#BEF264">${score}<span style="font-size:18px;color:var(--ink3)">/100</span></div>
-    <span class="grade" style="background:var(--bg-warning,rgba(190,242,100,.18));color:#BEF264">Grade ${grade} · Sehat 👍</span></div>`
-    +dims.map(d=>{const col=d[1]>=70?'#22C55E':d[1]>=50?'#BEF264':'#EF4444';
+  b.innerHTML=`<div class="hscore"><div class="num" style="color:#60A5FA">${score}<span style="font-size:18px;color:var(--ink3)">/100</span></div>
+    <span class="grade" style="background:var(--bg-warning,rgba(96,165,250,.18));color:#60A5FA">Grade ${grade} · Sehat 👍</span></div>`
+    +dims.map(d=>{const col=d[1]>=70?'#22C55E':d[1]>=50?'#FACC15':'#EF4444';
       return `<div class="hdim"><div class="hrow"><span>${d[0]}</span><span style="color:${col}">${d[1]}%</span></div>
         <div class="htr"><div class="hf" style="width:0;background:${col}" data-w="${d[1]}%"></div></div>${d[2]&&d[1]<75?`<p class="tip">💡 ${d[2]}</p>`:''}</div>`;}).join('');
   setTimeout(()=>b.querySelectorAll('.hf').forEach(f=>f.style.width=f.dataset.w),120);}
@@ -1489,18 +1494,18 @@ fr.addEventListener('click',e=>{if(fMoved){e.stopPropagation();e.preventDefault(
 const goStats=()=>go('stats',document.querySelectorAll('.nv')[1]);
 const goBudget=()=>go('budget',document.querySelectorAll('.nv')[2]);
 const PANELS={
-  fin:    {em:'🤖',tint:'rgba(163,230,53,.18)',t:'Fin AI',s:'Gemini · key kepasang',f:'Aktif',on:true, act:()=>openFin()},
+  fin:    {em:'🤖',tint:'rgba(59,130,246,.18)',t:'Fin AI',s:'Gemini · key kepasang',f:'Aktif',on:true, act:()=>openFin()},
   rutin:  {em:'🔁',tint:'rgba(34,197,94,.15)',t:'Transaksi Rutin',s:'2 rutin aktif',f:'Otomatis',on:true, act:()=>openRutin()},
-  target: {em:'🎯',tint:'rgba(190,242,100,.16)',ring:.68,rl:'68',t:'Target Nabung',s:'Dana Kamera · 68%',f:'2 target',on:true, act:()=>openGoal()},
+  target: {em:'🎯',tint:'rgba(96,165,250,.16)',ring:.68,rl:'68',t:'Target Nabung',s:'Dana Kamera · 68%',f:'2 target',on:true, act:()=>openGoal()},
   csv:    {em:'📤',tint:'rgba(59,130,246,.15)',t:'Backup & Export',s:'amanin data kamu',f:'Terakhir: 1 Jul',on:false, act:()=>openBackup()},
   scan:   {em:'📸',tint:'rgba(139,92,246,.16)',t:'Scan Struk',s:'Gemini Vision',f:'Siap pakai',on:true, act:()=>openScan()},
   skor:   {em:'❤️',tint:'rgba(239,68,68,.15)',ring:.78,rl:'78',t:'Skor Kesehatan',s:'keuangan: 78/100',f:'Sehat',on:true, act:()=>openHealth()},
   aikey:  {em:'🔑',tint:'rgba(139,92,246,.15)',t:'Pengaturan AI',s:'Gemini API key',f:'Terpasang',on:true, act:()=>openAISettings()},
   bulk:   {em:'📥',tint:'rgba(6,182,212,.15)',t:'Bulk Input',s:'catat borongan',f:'via chat',on:true, act:()=>toast('📥 Tulis banyak transaksi sekaligus, Fin yang misahin')},
   dark:   {em:'🌓',tint:'rgba(148,163,184,.14)',t:'Mode Tampilan',s:'gelap / terang / auto',f:'Gelap', act:()=>openThemeSheet()},
-  laporan:{em:'📊',tint:'rgba(163,230,53,.15)',t:'Laporan & Grafik',s:'pengeluaran per kategori',f:'Juli',on:true, act:goStats},
+  laporan:{em:'📊',tint:'rgba(59,130,246,.15)',t:'Laporan & Grafik',s:'pengeluaran per kategori',f:'Juli',on:true, act:goStats},
   heat:   {em:'🗓️',tint:'rgba(234,88,12,.16)',t:'Heatmap',s:'pola belanja harian',f:'di Statistik',on:true, act:goStats},
-  banding:{em:'⚖️',tint:'rgba(190,242,100,.15)',t:'Bandingkan Bulan',s:'komparasi side-by-side',f:'−12%',on:true, act:goStats},
+  banding:{em:'⚖️',tint:'rgba(96,165,250,.15)',t:'Bandingkan Bulan',s:'komparasi side-by-side',f:'−12%',on:true, act:goStats},
   anggaran:{em:'🧮',tint:'rgba(20,184,166,.15)',ring:.42,rl:'42%',t:'Anggaran',s:'jatah per kategori',f:'3 pos',on:true, act:goBudget},
   chat:   {em:'💬',tint:'rgba(236,72,153,.14)',t:'Catat via Chat',s:'ngobrol sama Fin',f:'NLP',on:true, act:()=>toast('💬 "makan 20rb" → langsung kecatat')},
 };
@@ -1556,7 +1561,7 @@ const bcat=id=>BCATS.find(c=>c[0]===id);
 const rb=n=>n>=1000000?((n/1000000).toLocaleString('id-ID',{maximumFractionDigits:1})+'jt'):(Math.round(n/1000)+'rb');
 function saveBud(){localStorage.setItem('genggamBudCap',JSON.stringify(BUDCAPS))}
 // #11 ring warna by status: aman(hijau) <70% · mepet(amber) 70-100% · jebol(merah) >100%
-function ringStroke(p){return p>1?'#EF4444':p>=.7?'#BEF264':'url(#gradEmber)';}
+function ringStroke(p){return p>1?'#EF4444':p>=.7?'#FACC15':'url(#gradEmber)';}
 // spent pos = jumlah TRANSAKSI kategori pos itu di bulan aktif (data-driven, editable via TX)
 function posTx(id){const cat=bcat(id)[2].toLowerCase();return TX.filter(t=>!t.masuk&&ymOf(t)===budYM&&t.kat.toLowerCase()===cat);}
 function posSpent(id){return posTx(id).reduce((a,t)=>a+t.jml,0);}
@@ -1691,7 +1696,7 @@ function buildHeatmap(){const g=document.getElementById('hmgrid');g.innerHTML=''
     c.style.animationDelay=(d*16)+'ms';
     if(isCur&&d>NOW.d){c.classList.add('future')}
     else{const v=(spend[d]||0)/maxSp;
-      if(v>0){c.style.background=v>=.8?'#A3E635':`rgba(163,230,53,${(.12+v*.55).toFixed(2)})`;
+      if(v>0){c.style.background=v>=.8?'#3B82F6':`rgba(59,130,246,${(.12+v*.55).toFixed(2)})`;
         if(v>=.55)c.style.color='#0F2005'}
       if(isCur&&d===NOW.d)c.classList.add('today');
       c.onclick=()=>openDayDetail(d);}
@@ -1707,7 +1712,7 @@ function openDayDetail(d){const rows=TX.filter(t=>ymOf(t)===ACTIVE_YM&&t.hari===
   document.getElementById('bsheet').classList.add('show');document.getElementById('bdrop').classList.add('show');}
 
 /* ===== QW#5 statistik angka REAL + tren · QW#8 donut kategori ===== */
-const DCOLORS=['#A3E635','#BEF264','#84CC16','#D9F99D','#4D7C0F','#D9F99D','#A6AC9E'];
+const DCOLORS=['#3B82F6','#60A5FA','#2563EB','#93C5FD','#1D4ED8','#93C5FD','#A6AC9E'];
 function statMonth(ym){const tx=TX.filter(t=>ymOf(t)===ym);
   const inS=tx.filter(t=>t.masuk).reduce((a,t)=>a+t.jml,0);
   const outS=tx.filter(t=>!t.masuk).reduce((a,t)=>a+t.jml,0);
@@ -1780,7 +1785,7 @@ document.querySelectorAll('#mpills .mp').forEach((p,pi)=>p.onclick=()=>{document
 document.querySelectorAll('#sw span').forEach(s=>s.onclick=()=>{
   document.querySelectorAll('#sw span').forEach(x=>x.classList.remove('on'));s.classList.add('on');
   phone.dataset.t=s.dataset.t;
-  document.documentElement.style.setProperty('--acc',s.dataset.t==='v2'?'#A3E635':'#3b82f6');
+  document.documentElement.style.setProperty('--acc',s.dataset.t==='v2'?'#3B82F6':'#3b82f6');
   toast(s.dataset.t==='v2'?'🔥 Tema Ember':'💙 Tema v1 (sekarang)',s.dataset.t!=='v2');});
 </script>
 <!-- ===== GENGGAM REAL ENGINE — Gemini BYO-key + export beneran (override simulasi prototype) ===== -->
@@ -1794,11 +1799,11 @@ document.querySelectorAll('#sw span').forEach(s=>s.onclick=()=>{
 #gkModal input{width:100%;box-sizing:border-box;background:rgba(0,0,0,.3);border:1px solid rgba(255,255,255,.14);border-radius:11px;padding:11px 12px;color:#f1f5f9;font-size:13px;outline:none}
 #gkModal .gkb{display:flex;gap:8px;margin-top:12px}
 #gkModal button{flex:1;border:0;border-radius:11px;padding:11px;font-weight:700;cursor:pointer;font-size:13.5px}
-#gkModal .gksave{background:#A3E635;color:#111827}
+#gkModal .gksave{background:#3B82F6;color:#fff}
 #gkModal .gkclose{background:rgba(255,255,255,.08);color:#cbd5e1}
-#gkModal a{color:#A3E635;font-weight:700;text-decoration:none}
-.finkeybar{margin:0 14px 10px;background:rgba(163,230,53,.1);border:1px solid rgba(163,230,53,.3);border-radius:12px;padding:9px 12px;font-size:12px;color:#cbd5e1;display:flex;align-items:center;gap:8px}
-.finkeybar b{color:#A3E635;cursor:pointer;white-space:nowrap}
+#gkModal a{color:#3B82F6;font-weight:700;text-decoration:none}
+.finkeybar{margin:0 14px 10px;background:rgba(59,130,246,.1);border:1px solid rgba(59,130,246,.3);border-radius:12px;padding:9px 12px;font-size:12px;color:#cbd5e1;display:flex;align-items:center;gap:8px}
+.finkeybar b{color:#3B82F6;cursor:pointer;white-space:nowrap}
 </style>
 <div id="gkModal">
   <div class="gkc">
@@ -1924,17 +1929,17 @@ gkSyncPanels();
 #ggmGate{position:fixed;inset:0;z-index:99990;background:#0d0d14;display:flex;align-items:center;justify-content:center;padding:24px;font-family:'Plus Jakarta Sans',system-ui,sans-serif}
 #ggmGate .gcard{width:100%;max-width:360px;text-align:center;color:#f1f5f9}
 #ggmGate .glogo{font-size:26px;font-weight:800;margin-bottom:6px}
-#ggmGate .glogo span{color:#A3E635}
+#ggmGate .glogo span{color:#60A5FA}
 #ggmGate p{color:#94a3b8;font-size:14px;margin:0 0 22px;line-height:1.55}
 #ggmGate input{width:100%;box-sizing:border-box;background:#16161f;border:1px solid rgba(255,255,255,.12);border-radius:14px;padding:15px 16px;color:#f1f5f9;font-size:16px;text-align:center;letter-spacing:1px;outline:none;text-transform:uppercase}
-#ggmGate input:focus{border-color:#A3E635}
-#ggmGate button{width:100%;margin-top:12px;background:#A3E635;border:0;border-radius:14px;padding:15px;color:#111827;font-weight:800;font-size:16px;cursor:pointer}
+#ggmGate input:focus{border-color:#60A5FA}
+#ggmGate button{width:100%;margin-top:12px;background:#3B82F6;border:0;border-radius:14px;padding:15px;color:#fff;font-weight:800;font-size:16px;cursor:pointer}
 #ggmGate .gerr{color:#f87171;font-size:13px;min-height:18px;margin-top:10px}
 #ggmGate .glinks{margin-top:18px;font-size:13.5px;color:#94a3b8}
-#ggmGate .glinks a{color:#A3E635;text-decoration:none;font-weight:700;cursor:pointer}
+#ggmGate .glinks a{color:#60A5FA;text-decoration:none;font-weight:700;cursor:pointer}
 #ggmGate .gnote{margin-top:22px;font-size:12px;color:#64748b}
-#ggmDemoBar{position:fixed;top:0;left:0;right:0;z-index:99980;background:#A3E635;color:#111827;font-family:'Plus Jakarta Sans',system-ui,sans-serif;font-size:12.5px;font-weight:700;text-align:center;padding:7px 12px}
-#ggmDemoBar a{color:#111827;text-decoration:underline}
+#ggmDemoBar{position:fixed;top:0;left:0;right:0;z-index:99980;background:#3B82F6;color:#fff;font-family:'Plus Jakarta Sans',system-ui,sans-serif;font-size:12.5px;font-weight:700;text-align:center;padding:7px 12px}
+#ggmDemoBar a{color:#fff;text-decoration:underline}
 </style>
 <div id="ggmGate" style="display:none">
   <div class="gcard">
@@ -1958,11 +1963,15 @@ window.__ggmTry=async function(){var el=document.getElementById('ggmCode'),err=d
 if(!(window.crypto&&crypto.subtle)){err.textContent='Buka lewat link resmi (https) ya';return}
 var h=await sha(c);var t=H[h];if(t){try{localStorage.setItem(LIC,JSON.stringify({c:c,t:t,at:Date.now()}))}catch(e){}document.getElementById('ggmGate').style.display='none';location.reload()}else{err.textContent='Kode gak cocok — cek lagi email pembelianmu'}};
 addEventListener('DOMContentLoaded',function(){
+if(/[?&]shot=/.test(location.search))return; /* mode capture: tanpa gate & tanpa banner */
 if(demoOn()){var b=document.createElement('div');b.id='ggmDemoBar';b.innerHTML='&#128269; Mode Demo &mdash; data gak tersimpen &middot; <a href="https://geriganteng17.github.io/genggam-app/#harga">Beli akses selamanya &rarr;</a>';document.body.appendChild(b);return}
 if(lic())return;
 document.getElementById('ggmGate').style.display='flex';
 var inp=document.getElementById('ggmCode');inp.addEventListener('keydown',function(e){if(e.key==='Enter')__ggmTry()});
 });
+/* anti-throttle: rAF beku di iframe offscreen/tab background -> angka count-up nyangkut di 0.
+   Fallback timer nulis nilai final (timer cuma di-throttle, gak dibekukan kayak rAF). */
+try{var _cuOrig=countUp;countUp=function(el,to,ms){_cuOrig(el,to,ms);setTimeout(function(){try{if(el&&el._v!==to){el.textContent=fmt(to);el._v=to;}}catch(e){}},(ms||1200)+600);};}catch(e){}
 if('serviceWorker' in navigator&&location.protocol.indexOf('http')===0)addEventListener('load',function(){navigator.serviceWorker.register('sw.js').catch(function(){})});
 })();
 </script>
