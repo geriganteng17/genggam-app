@@ -159,6 +159,25 @@
   .feat-card h3 { font-size: 17px; margin-bottom: 6px; }
   .feat-card p { color: var(--text-sec); font-size: 14px; }
 
+  /* Fitur lengkap */
+  .fitur-lengkap { background: var(--bg-card); }
+  .eyebrow {
+    display: block; text-align: center; font-family: ui-monospace, "SF Mono", Menlo, monospace;
+    font-size: 12px; letter-spacing: 2.5px; text-transform: uppercase; color: var(--accent); margin-bottom: 12px;
+  }
+  .fgroup { margin-bottom: 44px; }
+  .fgroup:last-of-type { margin-bottom: 28px; }
+  .fgroup-title {
+    font-size: 17px; font-weight: 700; margin-bottom: 16px; padding-bottom: 12px;
+    border-bottom: 1px solid var(--border); color: var(--text);
+  }
+  .fitur-lengkap .feat-grid { margin-top: 0; }
+  .fitur-lengkap .feat-card { background: var(--bg); padding: 20px; }
+  .fitur-lengkap .feat-card h3 { font-size: 15.5px; margin-bottom: 5px; line-height: 1.35; }
+  .fitur-lengkap .feat-card p { font-size: 13.5px; }
+  .fitur-lengkap .feat-icon { font-size: 24px; margin-bottom: 10px; }
+  .fstrip { text-align: center; color: var(--text-muted); font-size: 13.5px; max-width: 720px; margin: 0 auto; }
+
   /* Privacy */
   .privacy { background: linear-gradient(135deg, rgba(59,130,246,0.1), rgba(34,197,94,0.06)); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
   .privacy-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; max-width: 860px; margin: 0 auto; }
@@ -329,11 +348,56 @@ fbq('track', 'ViewContent', {content_name: 'Genggam App', content_category: 'app
         </ul>
       </div>
     </div>
-    <div class="feat-grid">
-      <div class="feat-card"><span class="feat-icon">🤖</span><h3>Tanya Fin, asisten AI</h3><p>"Gimana cara hemat bulan ini?" Fin jawab pakai data keuanganmu sendiri.</p></div>
-      <div class="feat-card"><span class="feat-icon">🎯</span><h3>Target nabung</h3><p>Bikin goal (dana darurat, gadget, liburan), pantau progresnya tiap hari.</p></div>
-      <div class="feat-card"><span class="feat-icon">💾</span><h3>Backup & Export</h3><p>Export CSV buat Excel/Sheets, backup JSON buat pindah perangkat. Datamu milikmu.</p></div>
+  </div>
+</section>
+
+<!-- FITUR LENGKAP -->
+<section class="fitur-lengkap" id="fitur-lengkap">
+  <div class="container">
+    <span class="eyebrow">ISI PAKETNYA</span>
+    <h2 class="section-title">Semua yang kamu dapat</h2>
+    <p class="section-sub">Satu aplikasi, sekali bayar. Nggak ada fitur yang tiba-tiba dikunci di tengah jalan.</p>
+
+    <div class="fgroup">
+      <h3 class="fgroup-title">⌨️ Nyatet secepat ngetik chat</h3>
+      <div class="feat-grid">
+        <div class="feat-card"><span class="feat-icon">⌨️</span><h3>Ketik biasa, langsung masuk</h3><p>Tulis "makan 20rb", kategorinya ketebak sendiri. Selesai.</p></div>
+        <div class="feat-card"><span class="feat-icon">📋</span><h3>Nunggak seminggu? Tempel sekaligus</h3><p>Tulis banyak transaksi barengan, semua masuk dalam sekali kirim.</p></div>
+        <div class="feat-card"><span class="feat-icon">🧾</span><h3>Foto struk, biar dia yang baca</h3><p>Nama toko, total, dan kategori keisi otomatis dari foto struknya.</p></div>
+        <div class="feat-card"><span class="feat-icon">🔁</span><h3>Yang tiap bulan sama, nggak usah diketik lagi</h3><p>Kos, langganan, cicilan tercatat otomatis tiap tanggalnya.</p></div>
+      </div>
     </div>
+
+    <div class="fgroup">
+      <h3 class="fgroup-title">🎯 Pegang kendali, bukan cuma nyatet</h3>
+      <div class="feat-grid">
+        <div class="feat-card"><span class="feat-icon">🎯</span><h3>Tau kapan harus ngerem</h3><p>Ring jatah per kategori berubah warna: aman, mepet, jebol.</p></div>
+        <div class="feat-card"><span class="feat-icon">🏦</span><h3>Nabung yang kelihatan majunya</h3><p>Pasang target, lihat progresnya naik tiap kali kamu nyisihin.</p></div>
+        <div class="feat-card"><span class="feat-icon">💯</span><h3>Nilai rapor buat keuanganmu</h3><p>Skor plus grade, biar tau bulan ini beneran membaik atau enggak.</p></div>
+        <div class="feat-card"><span class="feat-icon">💬</span><h3>Tanya aja, dia hafal datamu</h3><p>Chat Fin soal pengeluaranmu sendiri, bukan jawaban template.</p></div>
+      </div>
+    </div>
+
+    <div class="fgroup">
+      <h3 class="fgroup-title">📊 Lihat ke mana uangmu pergi</h3>
+      <div class="feat-grid">
+        <div class="feat-card"><span class="feat-icon">🍩</span><h3>Ketahuan bocornya di mana</h3><p>Donat kategori nunjukin porsi terbesar pengeluaranmu bulan ini.</p></div>
+        <div class="feat-card"><span class="feat-icon">📈</span><h3>Bulan ini lebih boros atau nggak</h3><p>Tren bulanan dan perbandingan antar bulan, bukan cuma angka mentah.</p></div>
+        <div class="feat-card"><span class="feat-icon">🔥</span><h3>Hari-hari paling bocor kelihatan</h3><p>Heatmap harian nunjukin tanggal berapa kamu paling sering jajan.</p></div>
+        <div class="feat-card"><span class="feat-icon">🔍</span><h3>Nyari transaksi lama, ketemu detik itu</h3><p>Riwayat lengkap dengan pencarian dan filter per bulan.</p></div>
+      </div>
+    </div>
+
+    <div class="fgroup">
+      <h3 class="fgroup-title">🔐 Datamu di HP kamu, titik</h3>
+      <div class="feat-grid">
+        <div class="feat-card"><span class="feat-icon">🔐</span><h3>Nggak ada akun, nggak ada server kami</h3><p>Buka langsung pakai. Catatanmu disimpan di HP kamu sendiri.</p></div>
+        <div class="feat-card"><span class="feat-icon">✈️</span><h3>Nggak ada sinyal? Tetap jalan</h3><p>Nyatet, lihat laporan, atur anggaran, semua jalan tanpa internet.</p></div>
+        <div class="feat-card"><span class="feat-icon">📤</span><h3>Datamu bisa kamu bawa pergi</h3><p>Export CSV per bulan atau semua, plus backup dan restore kapan aja.</p></div>
+      </div>
+    </div>
+
+    <p class="fstrip">Plus: mode gelap &amp; terang · bisa dipasang di HP dan browser (APK + web) · tanpa iklan · update gratis, tanpa tagihan bulanan</p>
   </div>
 </section>
 
@@ -344,7 +408,7 @@ fbq('track', 'ViewContent', {content_name: 'Genggam App', content_category: 'app
     <p class="section-sub">Justru karena ini soal uangmu, Genggam dirancang tanpa server.</p>
     <div class="privacy-grid">
       <div class="privacy-card"><div class="ic">🔒</div><h3>100% lokal</h3><p>Semua catatan tersimpan di perangkatmu sendiri. Nggak ada yang dikirim ke mana-mana.</p></div>
-      <div class="privacy-card"><div class="ic">✈️</div><h3>Jalan offline</h3><p>Di gunung, di kereta, tanpa sinyal: tetap bisa nyatet. Internet cuma buat fitur AI.</p></div>
+      <div class="privacy-card"><div class="ic">✈️</div><h3>Jalan offline</h3><p>Tanpa sinyal, app tetap jalan penuh dan kategori ditebak kamus offline. Internet cuma dipakai saat kamu pakai fitur AI (tebak kategori, scan struk, chat Fin).</p></div>
       <div class="privacy-card"><div class="ic">🚪</div><h3>Tanpa login</h3><p>Nggak perlu bikin akun, nggak ada email spam, nggak ada data yang dijual.</p></div>
     </div>
   </div>
@@ -362,13 +426,18 @@ fbq('track', 'ViewContent', {content_name: 'Genggam App', content_category: 'app
         <div class="compare-cell">App langganan</div>
         <div class="compare-cell genggam-col">Genggam ⚡</div>
       </div>
-      <div class="compare-row"><div class="compare-cell feat-col">Catat secepat ngetik chat</div><div class="compare-cell">✕</div><div class="compare-cell">Sebagian</div><div class="compare-cell genggam-col">✓</div></div>
-      <div class="compare-row"><div class="compare-cell feat-col">Kategori otomatis (AI)</div><div class="compare-cell">✕</div><div class="compare-cell">✓</div><div class="compare-cell genggam-col">✓</div></div>
-      <div class="compare-row"><div class="compare-cell feat-col">Scan struk otomatis</div><div class="compare-cell">✕</div><div class="compare-cell">Tier mahal</div><div class="compare-cell genggam-col">✓</div></div>
-      <div class="compare-row"><div class="compare-cell feat-col">Data 100% di perangkatmu</div><div class="compare-cell">✓</div><div class="compare-cell">✕ di server</div><div class="compare-cell genggam-col">✓</div></div>
-      <div class="compare-row"><div class="compare-cell feat-col">Budget, goal, skor kesehatan</div><div class="compare-cell">Manual</div><div class="compare-cell">✓</div><div class="compare-cell genggam-col">✓</div></div>
-      <div class="compare-row"><div class="compare-cell feat-col">Biaya</div><div class="compare-cell">Gratis, tapi berat</div><div class="compare-cell">Rp30-50rb / bulan</div><div class="compare-cell genggam-col">Sekali Rp99rb</div></div>
+      <div class="compare-row"><div class="compare-cell feat-col">Biaya</div><div class="compare-cell">Gratis, dibayar pakai waktumu</div><div class="compare-cell">Rp19rb sampai Rp98rb tiap bulan</div><div class="compare-cell genggam-col">Bayar sekali Rp99rb</div></div>
+      <div class="compare-row"><div class="compare-cell feat-col">AI-nya sampai kapan</div><div class="compare-cell">Nggak ada</div><div class="compare-cell">Sering trial, habis itu bayar lagi</div><div class="compare-cell genggam-col">Selama app dipakai</div></div>
+      <div class="compare-row"><div class="compare-cell feat-col">Cara nyatet</div><div class="compare-cell">Ketik manual ke kolom</div><div class="compare-cell">Isi form, pilih kategori satu-satu</div><div class="compare-cell genggam-col">Ketik bebas "makan 20rb"</div></div>
+      <div class="compare-row"><div class="compare-cell feat-col">Nyatet nunggak banyak</div><div class="compare-cell">Satu-satu</div><div class="compare-cell">Satu-satu</div><div class="compare-cell genggam-col">Tempel sekaligus</div></div>
+      <div class="compare-row"><div class="compare-cell feat-col">Struk numpuk</div><div class="compare-cell">Ketik ulang manual</div><div class="compare-cell">Sebagian cuma bisa lampir foto</div><div class="compare-cell genggam-col">Difoto, kebaca isinya</div></div>
+      <div class="compare-row"><div class="compare-cell feat-col">Butuh bikin akun</div><div class="compare-cell">Nggak</div><div class="compare-cell">Wajib daftar &amp; login</div><div class="compare-cell genggam-col">Nggak, buka langsung pakai</div></div>
+      <div class="compare-row"><div class="compare-cell feat-col">Data disimpan di mana</div><div class="compare-cell">Di file kamu</div><div class="compare-cell">Di server mereka</div><div class="compare-cell genggam-col">Di HP kamu</div></div>
+      <div class="compare-row"><div class="compare-cell feat-col">Ambil datamu keluar</div><div class="compare-cell">Datanya memang milikmu</div><div class="compare-cell">Sering dikunci di tier atas</div><div class="compare-cell genggam-col">Export CSV &amp; backup, gratis</div></div>
     </div>
+    <p style="text-align:center; color:var(--text-muted); font-size:13px; margin-top:20px; max-width:640px; margin-left:auto; margin-right:auto;">
+      Jujur soal batasnya: Genggam belum punya dompet terpisah per rekening, sinkron antar-HP, dan catatan utang. Kalau itu wajib buat kamu, Genggam belum cocok sekarang. Detail ada di FAQ di bawah.
+    </p>
   </div>
 </section>
 
@@ -435,6 +504,9 @@ fbq('track', 'ViewContent', {content_name: 'Genggam App', content_category: 'app
       <div class="faq-item"><h3>Datanya disimpan di mana?</h3><p>Di HP kamu sendiri (penyimpanan lokal). Genggam nggak nyimpen data keuanganmu di server mana pun. Privat, dan tetap bisa dibuka offline.</p></div>
       <div class="faq-item"><h3>Kenapa bayar, kalau ada app gratis?</h3><p>App gratis biasanya bayar dengan cara lain: iklan, datamu, atau fitur inti yang dikunci di langganan. Genggam kebalikannya: sekali bayar Rp99.000, semua fitur kebuka, tanpa iklan, dan datamu nggak pernah ninggalin HP-mu.</p></div>
       <div class="faq-item"><h3>Beli aplikasi di luar Play Store, aman?</h3><p>Justru itu alasannya ada demo gratis: coba dulu sepuasnya di browser sebelum keluar uang. Ditambah garansi 30 hari uang kembali. Aplikasinya offline-first, nggak minta izin aneh-aneh, dan data 100% di perangkatmu.</p></div>
+      <div class="faq-item"><h3>Bisa pisah dompet tunai, bank, sama e-wallet nggak?</h3><p>Belum bisa. Genggam sekarang fokus ke satu aliran keluar masuk supaya nyatetnya cepat. Kalau kamu butuh saldo terpisah per rekening, jujur aja, ini belum cocok buat kamu sekarang. Update ke depan gratis buat yang sudah beli.</p></div>
+      <div class="faq-item"><h3>Katanya offline, kok pakai AI?</h3><p>Data kamu 100% di HP dan nggak pernah dikirim ke server kami. Yang butuh internet cuma tiga hal opsional: tebak kategori AI, scan struk, dan chat Fin. Tanpa internet app tetap jalan penuh, kategori ditebak kamus offline bawaan.</p></div>
+      <div class="faq-item"><h3>Kalau ganti HP atau HP-nya hilang, gimana?</h3><p>Nggak perlu beli lagi. Download ulang aplikasinya dari link pembelian kamu, lalu restore dari file backup (buka menu Backup &amp; Export, simpan filenya ke Drive atau chat sendiri). Karena kami nggak nyimpen data kamu di server, pemindahannya kamu yang pegang penuh.</p></div>
       <div class="faq-item"><h3>Apakah perlu langganan?</h3><p>Nggak. Sekali bayar Rp99.000, kamu pakai selamanya termasuk update. Nggak ada tagihan bulanan.</p></div>
       <div class="faq-item"><h3>Fitur AI-nya bayar lagi?</h3><p>Nggak. Fitur AI pakai API key Gemini gratis dari Google, tinggal ikutin panduan singkat di dalam app (3 langkah, gratis).</p></div>
       <div class="faq-item"><h3>Bisa dipakai di iPhone atau laptop?</h3><p>Aplikasi Android tersedia sekarang. Versi web (bisa dibuka di browser iPhone dan laptop) lagi digulirkan untuk semua pembeli. Demo web-nya udah bisa kamu coba dari halaman ini.</p></div>
