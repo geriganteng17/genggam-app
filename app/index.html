@@ -1962,8 +1962,27 @@ async function sha(s){var b=new TextEncoder().encode(s);var d=await crypto.subtl
 window.__ggmTry=async function(){var el=document.getElementById('ggmCode'),err=document.getElementById('ggmErr');var c=(el.value||'').trim().toUpperCase().replace(/\s+/g,'');if(!c){err.textContent='Isi kodenya dulu ya';return}
 if(!(window.crypto&&crypto.subtle)){err.textContent='Buka lewat link resmi (https) ya';return}
 var h=await sha(c);var t=H[h];if(t){try{localStorage.setItem(LIC,JSON.stringify({c:c,t:t,at:Date.now()}))}catch(e){}document.getElementById('ggmGate').style.display='none';location.reload()}else{err.textContent='Kode gak cocok — cek lagi email pembelianmu'}};
-addEventListener('DOMContentLoaded',function(){
+/* AUTO-UNLOCK DARI LINK (22 Jul 2026) --------------------------------------
+   Kenapa ada: halaman "akses rahasia" dulu ditaruh di repo PUBLIK, dan GitHub
+   nampilin daftar isi folder ke siapa saja -> kodenya kebaca tanpa perlu nebak.
+   Halaman itu udah dicabut. Sekarang kodenya nempel di LINK delivery Scalev,
+   yang cuma dilihat pembeli, dan dikirim lewat #hash yang TIDAK ikut ke server.
+   Efek sampingnya bagus: pembeli gak perlu ngetik kode manual, tinggal klik. */
+async function unlockDariLink(){
+  var m = (location.hash||'').match(/[#&]k=([A-Za-z0-9-]+)/) || (location.search||'').match(/[?&]k=([A-Za-z0-9-]+)/);
+  if(!m) return false;
+  try{
+    var t = H[await sha(m[1].trim().toUpperCase())];
+    if(!t) return false;
+    localStorage.setItem(LIC, JSON.stringify({c:m[1],t:t,at:Date.now()}));
+    /* buang kodenya dari address bar biar gak ke-screenshot / ke-share gak sengaja */
+    history.replaceState(null,'',location.pathname);
+    return true;
+  }catch(e){ return false; }
+}
+addEventListener('DOMContentLoaded',async function(){
 if(/[?&]shot=/.test(location.search))return; /* mode capture: tanpa gate & tanpa banner */
+if(await unlockDariLink()){ location.reload(); return; }
 if(demoOn()){var b=document.createElement('div');b.id='ggmDemoBar';b.innerHTML='&#128269; Mode Demo &mdash; data gak tersimpen &middot; <a href="https://geriganteng17.github.io/genggam-app/#harga">Beli akses selamanya &rarr;</a>';document.body.appendChild(b);return}
 if(lic())return;
 document.getElementById('ggmGate').style.display='flex';
